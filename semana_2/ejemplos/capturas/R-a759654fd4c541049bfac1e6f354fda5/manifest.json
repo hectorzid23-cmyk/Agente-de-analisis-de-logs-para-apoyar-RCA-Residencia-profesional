@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "run_id": "R-a759654fd4c541049bfac1e6f354fda5",
+  "test_name": "N01_pass_limpio",
+  "query": {
+    "operation": "ingest_log"
+  },
+  "data": {
+    "files_processed": 1,
+    "lines": 14,
+    "test_name_observations": [
+      {
+        "value": "N01_pass_limpio",
+        "file_id": "F0001",
+        "line": 3,
+        "event_id": "R-a759654fd4c541049bfac1e6f354fda5:F0001:3"
+      }
+    ],
+    "format_hint": "uvm"
+  },
+  "warnings": [],
+  "provenance": [
+    {
+      "file_id": "F0001",
+      "log_file": "pruebas_funcionales_logs/casos/N01_pass_limpio.log",
+      "snapshot": "F0001.log",
+      "records": "F0001.jsonl",
+      "sha256": "4ea344444bbe1d08a7fef0986c1f78626ec6eed7c32aeb223dc34b98519c4ab7",
+      "bytes": 655,
+      "encoding": "utf-8",
+      "line_count": 14,
+      "final_newline": true,
+      "known_truncated": false
+    }
+  ]
+}

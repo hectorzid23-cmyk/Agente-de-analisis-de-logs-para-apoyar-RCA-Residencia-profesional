@@ -1,0 +1,7 @@
+# FIXTURE SINTETICO: no procede de una simulacion ni de un repositorio externo.
+# Referencias fixture_*.sv ficticias; unidad de tiempo de este escenario: ns.
+# +UVM_TESTNAME=F02_fatal_configuracion -sv_seed 1
+# UVM_INFO fixture_test.sv(10) @ 0: uvm_test_top [RNTST] Running test F02_fatal_configuracion...
+# UVM_FATAL fixture_env.sv(15) @ 0: uvm_test_top.env [NOVIF] Virtual interface vif not configured
+# ** Note: $finish requested by fatal handler
+# End time: 00:00:01; fixture run closed after fatal

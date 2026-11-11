@@ -1,0 +1,178 @@
+{
+  "fecha": "2026-11-04",
+  "alcance": "Árboles y rutas accesibles de las fuentes GitHub discutidas. Buscar nombres, extensiones y tamaños no permite acreditar truncamiento ni codificación.",
+  "repositorios": [
+    {
+      "repo": "openhwfoundation/cvfpu-uvm",
+      "sha": "2f787402256b76d00e397d72a00b57120db455cf",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "openhwfoundation/core-v-verif",
+      "sha": "b137fd2518df92b5101c9229a59aee9d7bdf1e92",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "openhwfoundation/cv32e40p",
+      "sha": "b353438ff469c030c89f6804f3b24a2852880e8b",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "lowRISC/ibex",
+      "sha": "fab0d864c8f3f1edebe3ca50b2bd75627fb0e22c",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "pulp-platform/common_verification",
+      "sha": "c5d97a1fae01d2d8e8e311dee341b6b8849dcf38",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "chipsalliance/sv-tests",
+      "sha": "b8cbf49962ccac836dcb54ecb00feb2ae1fa4f9f",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "Tharunreddym/axi4-verification",
+      "sha": "6e38818007a1e2d4570746000a8e25932200b033",
+      "arbol_truncado": false,
+      "logs": [
+        {
+          "path": "logs/base_test_seed1_questa.log",
+          "bytes": 10288,
+          "sha": "84db5a92d491eb74ce25188011c4d1b90ec21bc5"
+        },
+        {
+          "path": "logs/burst_read_test_seed1_questa.log",
+          "bytes": 10344,
+          "sha": "0a43a32b68a4b10f3f08b3c02c48f962d750471b"
+        },
+        {
+          "path": "logs/burst_read_test_seed1_questa_FAIL.log",
+          "bytes": 10908,
+          "sha": "27bdb9889d7b93ffa5c96b1e0b359cc5f82bd76a"
+        },
+        {
+          "path": "logs/burst_write_test_seed1_questa.log",
+          "bytes": 10352,
+          "sha": "f1458be2dce03787cd6a85fa0ba6197271cce16d"
+        },
+        {
+          "path": "logs/random_stress_test_seed1_questa.log",
+          "bytes": 10379,
+          "sha": "1f83e0527ebfd447065c26873807f6675dbfb20f"
+        }
+      ]
+    },
+    {
+      "repo": "isbogdanov/riscv-core-dv-uvm",
+      "sha": "0b9a43f9e0f7e79a18e2dd28070f654da325b6a4",
+      "arbol_truncado": false,
+      "logs": [
+        {
+          "path": "bug_story/after_fix.log",
+          "bytes": 4915,
+          "sha": "e294257808d07bf87c054f43936dcddb4729b034"
+        },
+        {
+          "path": "bug_story/before_fix.log",
+          "bytes": 5066,
+          "sha": "af9a5ed1df99e6d0de497282e8e77d8d4685f011"
+        },
+        {
+          "path": "sample_logs/formal_proof/pc_x0.log",
+          "bytes": 6264,
+          "sha": "886b5db37177df58f18e8bb0d72c74005b272519"
+        },
+        {
+          "path": "sample_logs/uvm_classic/out_2025-06-29/sim_riscv_arithmetic_basic_test_17216.log",
+          "bytes": 21131,
+          "sha": "28316772f9ac9dc4819cbb4cb3ba7e6e0b3c9ede"
+        },
+        {
+          "path": "sample_logs/uvm_classic/out_2025-06-29/spike_sim/riscv_arithmetic_basic_test_17216.log",
+          "bytes": 573824,
+          "sha": "c5445920c405d166f257122448a98492e28cae13"
+        },
+        {
+          "path": "sample_logs/uvm_classic/uvm_run.log",
+          "bytes": 361553,
+          "sha": "a37d3de0f48042554824d38efe10e4cc253818d9"
+        },
+        {
+          "path": "sample_logs/uvm_scripted/out_2025-06-17/rtl_trace_734173.log",
+          "bytes": 202219,
+          "sha": "88b3f97b114a4189148a711c7f1667bbc430a856"
+        },
+        {
+          "path": "sample_logs/uvm_scripted/out_2025-06-17/sim_riscv_arithmetic_basic_test_0.log",
+          "bytes": 21136,
+          "sha": "c5e97644511da190b14424dd5021801526187b0b"
+        },
+        {
+          "path": "sample_logs/uvm_scripted/out_2025-06-17/spike_sim/riscv_arithmetic_basic_test_0.log",
+          "bytes": 1061970,
+          "sha": "302006da9564dd63a3177e426f5a88af687c8374"
+        },
+        {
+          "path": "sample_logs/uvm_scripted/run.log",
+          "bytes": 37317,
+          "sha": "b03cab445c187b673dbea8f9d9710dd24f311e7c"
+        }
+      ]
+    },
+    {
+      "repo": "unihd-cag/openhmc",
+      "sha": "0cf58e2f60c79aa64d35650b6e30e4d5c13e4a78",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "NVlabs/verilog-eval",
+      "sha": "c498220d0a52248f8e3fdffe279075215bde2da6",
+      "arbol_truncado": false,
+      "logs": []
+    },
+    {
+      "repo": "ben-marshall/awesome-open-hardware-verification",
+      "sha": "0d3627b6c19f01b97f66689f2bbedce6d75074be",
+      "arbol_truncado": false,
+      "logs": []
+    }
+  ],
+  "otros": [
+    {
+      "repo": "lowRISC/opentitan",
+      "sha": "ad26135c68e59a922def2c0183a2cbfcf8af7e6d",
+      "alcance": "Subárboles util, hw/dv/tools, hw/dv/sv; sin logs candidatos. No inspección exhaustiva de todo el monorepo."
+    },
+    {
+      "repo": "verilator/verilator",
+      "subarbol_sha": "c923a9627a08ad999c08664be5e12149bd3b3996",
+      "alcance": "test_regress/t completo",
+      "vacios": [
+        "t_preproc_ttempty.out",
+        "t_sarif_clean.out",
+        "t_sys_readmem_assoc__empty.mem.out"
+      ]
+    },
+    {
+      "repo": "chipsalliance/sv-tests-results",
+      "alcance": "logs/Verilator/testbenches; resultados disponibles como HTML."
+    },
+    {
+      "fuente": "OpenCores LPFFIR/ethmac",
+      "estado": "No recuperado: el acceso al archivo LPFFIR falló; no se presupone disponibilidad de variantes."
+    },
+    {
+      "fuente": "Hugging Face RTL Synthetic o3",
+      "estado": "La revisión previa identifica Parquet, no corpus de archivos .log; el acceso actual al árbol falló. No incorporado."
+    }
+  ]
+}

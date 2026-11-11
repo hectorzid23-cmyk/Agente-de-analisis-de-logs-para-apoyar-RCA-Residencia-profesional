@@ -1,0 +1,201 @@
+# FIXTURE SINTETICO DE CODIFICACION: simulación, señal, áéíóúñü, €
+[2026-05-19 08:33:26 UTC] qrun -batch -access=rw+/. -uvmhome uvm-1.2 '-timescale' '1ns/1ps' -mfcu design.sv testbench.sv '-voptargs=+acc=npr' '-sv_seed' '1' '+UVM_TESTNAME=burst_read_test' '+UVM_VERBOSITY=UVM_LOW'  -do  " run 100 us; exit"  
+QuestaSim-64 qrun 2025.2 Utility 2025.05 May 31 2025
+Start time: 04:33:26 on May 19,2026
+qrun -batch -access=rw+/. -uvmhome uvm-1.2 -timescale 1ns/1ps -mfcu design.sv testbench.sv -voptargs="+acc=npr" -sv_seed 1 "+UVM_TESTNAME=burst_read_test" "+UVM_VERBOSITY=UVM_LOW" -do " run 100 us; exit" 
+** Note: (qrun-220) 'modelsim.ini' is used as the ini file.
+Creating library 'qrun.out/work'.
+Mapping library 'mtiUvm' to 'qrun.out/work'.
+** Note: (vmap-220) 'modelsim.ini' is used as the ini file.
+QuestaSim-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+Start time: 04:33:27 on May 19,2026
+vlog -timescale 1ns/1ps -mfcu -ccflags "-Wno-missing-declarations" -ccflags "-Wno-maybe-uninitialized" -ccflags "-Wno-return-type" -ccflags "-DQUESTA" /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc /usr/share/questa/questasim/verilog_src/uvm-1.2/src/uvm_pkg.sv /usr/share/questa/questasim/verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv design.sv testbench.sv -work qrun.out/work "+incdir+/usr/share/questa/questasim/verilog_src/uvm-1.2/src" -statslog qrun.out/stats_log -csession=incr 
+** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
+-- Compiling package uvm_pkg (uvm-1.2 Built-in)
+-- Compiling package questa_uvm_pkg
+-- Importing package uvm_pkg (uvm-1.2 Built-in)
+-- Compiling package uvm_pkg_sv_unit
+-- Importing package uvm_pkg (uvm-1.2 Built-in)
+-- Importing package axi4_pkg
+-- Compiling interface axi4_if
+-- Compiling module axi4_slave_ctrl
+-- Compiling module axi4_assertions
+-- Compiling package axi4_pkg
+-- Compiling module axi4_tb_top
+
+Top level modules:
+	axi4_tb_top
+** Note: (vlog-7082) For C/C++ auto compile, choosing compiler /usr/bin/g++ set from the PATH environment variable.
+-- Compiling DPI/PLI C++ file /usr/share/questa/questasim/verilog_src/uvm-1.2/src/dpi/uvm_dpi.cc
+End time: 04:33:29 on May 19,2026, Elapsed time: 0:00:02
+Errors: 0, Warnings: 0
+QuestaSim-64 vopt 2025.2 Compiler 2025.05 May 31 2025
+** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+Start time: 04:33:29 on May 19,2026
+vopt -access=rw+/. -timescale 1ns/1ps -mfcu "+acc=npr" -findtoplevels qrun.out/work+2+ -work qrun.out/work -statslog qrun.out/stats_log -csession=incr -o qrun_opt -csessionid=3 
+** Note: (vopt-220) 'modelsim.ini' is used as the ini file.
+
+Top level modules:
+	axi4_tb_top
+
+Analyzing design...
+-- Loading module axi4_tb_top
+-- Loading package questa_uvm_pkg
+-- Loading interface axi4_if
+-- Loading module axi4_slave_ctrl
+-- Loading module axi4_assertions
+Optimizing 9 design-units (inlining 0/4 module instances):
+-- Optimizing package uvm_pkg (uvm-1.2 Built-in)(fast)
+-- Optimizing package questa_uvm_pkg(fast)
+-- Optimizing package axi4_pkg(fast)
+-- Optimizing package uvm_pkg_sv_unit(fast)
+-- Optimizing module axi4_assertions(fast)
+-- Optimizing module axi4_slave_ctrl(fast)
+-- Optimizing module axi4_tb_top(fast)
+-- Optimizing interface axi4_if(fast__2)
+-- Optimizing interface axi4_if(fast)
+Optimized design name is qrun_opt
+End time: 04:33:37 on May 19,2026, Elapsed time: 0:00:08
+Errors: 0, Warnings: 1
+# ** Note: (vsim-220) 'modelsim.ini' is used as the ini file.
+# vsim -batch -sv_seed 1 "+UVM_TESTNAME=burst_read_test" "+UVM_VERBOSITY=UVM_LOW" -lib qrun.out/work -do " run 100 us; exit" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log 
+# Start time: 04:33:37 on May 19,2026
+# Loading /tmp/root@24b574be24f4_dpi_34/linux_x86_64_gcc-11/export_tramp.so
+# //  Questa Sim-64
+# //  Version 2025.2 linux_x86_64 May 31 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+# Loading sv_std.std
+# Loading work.axi4_if(fast)
+# Loading work.uvm_pkg(fast)
+# Loading work.axi4_pkg(fast)
+# Loading work.uvm_pkg_sv_unit(fast)
+# Loading work.questa_uvm_pkg(fast)
+# Loading work.axi4_tb_top(fast)
+# Loading work.axi4_if(fast__2)
+# Loading work.axi4_slave_ctrl(fast)
+# Loading work.axi4_assertions(fast)
+# ** Note: (vsim-7082) For C/C++ auto compile, choosing compiler /usr/bin/g++ set from the PATH environment variable.
+# Compiling /tmp/root@24b574be24f4_dpi_34/linux_x86_64_gcc-11/exportwrapper.c
+# Loading /tmp/root@24b574be24f4_dpi_34/linux_x86_64_gcc-11/vsim_auto_compile.so
+# 
+# run 100 us
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+# ----------------------------------------------------------------
+# UVM-1.2
+# (C) 2007-2014 Mentor Graphics Corporation
+# (C) 2007-2014 Cadence Design Systems, Inc.
+# (C) 2006-2014 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# (C) 2013-2014 NVIDIA Corporation
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO @ 0: reporter [RNTST] Running test burst_read_test...
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_root.svh(579) @ 0: reporter [UVMTOP] UVM testbench topology:
+# --------------------------------------------------------------
+# Name                       Type                    Size  Value
+# --------------------------------------------------------------
+# uvm_test_top               burst_read_test         -     @356 
+#   env                      axi4_env                -     @368 
+#     coverage_coll          axi4_coverage           -     @400 
+#       analysis_imp         uvm_analysis_imp        -     @408 
+#     master_agent           axi4_master_agent       -     @376 
+#       driver               axi4_master_driver      -     @432 
+#         rsp_port           uvm_analysis_port       -     @449 
+#         seq_item_port      uvm_seq_item_pull_port  -     @440 
+#       monitor              axi4_monitor            -     @424 
+#         read_ap            uvm_analysis_port       -     @591 
+#         write_ap           uvm_analysis_port       -     @582 
+#       sequencer            uvm_sequencer           -     @458 
+#         rsp_export         uvm_analysis_export     -     @466 
+#         seq_item_export    uvm_seq_item_pull_imp   -     @572 
+#         arbitration_queue  array                   0     -    
+#         lock_queue         array                   0     -    
+#         num_last_reqs      integral                32    'd1  
+#         num_last_rsps      integral                32    'd1  
+#     scoreboard             axi4_scoreboard         -     @392 
+#       read_export          uvm_analysis_imp_read   -     @615 
+#       write_export         uvm_analysis_imp_write  -     @606 
+#     slave_agent            axi4_slave_agent        -     @384 
+#       monitor              axi4_monitor            -     @626 
+#         read_ap            uvm_analysis_port       -     @643 
+#         write_ap           uvm_analysis_port       -     @634 
+# --------------------------------------------------------------
+# 
+# UVM_INFO testbench.sv(2110) @ 0: uvm_test_top [burst_read_test] === Burst Read Test: starting ===
+# UVM_ERROR testbench.sv(1342) @ 1025000: uvm_test_top.env.scoreboard [axi4_scoreboard] MISMATCH @ addr=0x00000100 byte=0 : exp=0xb5 act=0xf1
+# UVM_ERROR testbench.sv(1342) @ 1025000: uvm_test_top.env.scoreboard [axi4_scoreboard] MISMATCH @ addr=0x00000101 byte=1 : exp=0xf9 act=0x43
+# UVM_ERROR testbench.sv(1342) @ 1025000: uvm_test_top.env.scoreboard [axi4_scoreboard] MISMATCH @ addr=0x00000102 byte=2 : exp=0x57 act=0xdd
+# UVM_ERROR testbench.sv(1342) @ 1025000: uvm_test_top.env.scoreboard [axi4_scoreboard] MISMATCH @ addr=0x00000103 byte=3 : exp=0x82 act=0x34
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_objection.svh(1270) @ 1235000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO testbench.sv(1518) @ 1235000: uvm_test_top.env.coverage_coll [axi4_coverage] 
+# ==============================
+#    COVERAGE SUMMARY
+# ==============================
+#   Write CG : 53.6%
+#   Read  CG : 71.5%
+#   Strobe CG: 14.3%
+# ==============================
+# UVM_INFO testbench.sv(1363) @ 1235000: uvm_test_top.env.scoreboard [axi4_scoreboard] 
+# ========================================
+#       AXI4 SCOREBOARD SUMMARY
+# ========================================
+#   Write transactions : 2
+#   Read  transactions : 5
+#   Matching beats     : 29
+#   Mismatched beats   : 1
+# ========================================
+# UVM_ERROR testbench.sv(1375) @ 1235000: uvm_test_top.env.scoreboard [axi4_scoreboard] FAIL ? 1 mismatched beat(s) detected!
+# UVM_INFO testbench.sv(2015) @ 1235000: uvm_test_top [burst_read_test] 
+# *** TEST FAILED ***
+# UVM_INFO /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_report_server.svh(847) @ 1235000: reporter [UVM/REPORT/SERVER] 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    8
+# UVM_WARNING :    0
+# UVM_ERROR :    5
+# UVM_FATAL :    0
+# ** Report counts by id
+# [RNTST]     1
+# [TEST_DONE]     1
+# [UVM/RELNOTES]     1
+# [UVMTOP]     1
+# [axi4_coverage]     1
+# [axi4_scoreboard]     6
+# [burst_read_test]     2
+# 
+# ** Note: $finish    : /usr/share/questa/questasim/verilog_src/uvm-1.2/src/base/uvm_root.svh(517)
+#    Time: 1235 ns  Iteration: 68  Instance: /axi4_tb_top
+# End time: 04:33:39 on May 19,2026, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+End time: 04:33:39 on May 19,2026, Elapsed time: 0:00:13
+*** Summary *********************************************
+    qrun: Errors:   0, Warnings:   0
+    vlog: Errors:   0, Warnings:   0
+    vopt: Errors:   0, Warnings:   1
+    vsim: Errors:   0, Warnings:   0
+  Totals: Errors:   0, Warnings:   1
+Done

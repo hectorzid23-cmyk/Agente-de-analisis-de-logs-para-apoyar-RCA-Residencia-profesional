@@ -1,0 +1,513 @@
+{
+  "annotation_version": "1.2",
+  "case_id": "C05",
+  "run_id_manual": "R05",
+  "titulo": "Warning multilínea y límites del resultado",
+  "fecha": "2026-10-30",
+  "politicas": [
+    "LOCAL-PF-1.1",
+    "LOCAL-REF-1.1"
+  ],
+  "revision": {
+    "autor": "Asistente, a solicitud del estudiante",
+    "estado": "propuesto",
+    "revisor_independiente": null,
+    "fecha_revision": null
+  },
+  "fuente": {
+    "log_file": "../fuentes/riscv_uvm_run.log",
+    "base_ruta": "directorio_de_esta_ficha",
+    "sha256_local": "298604b8469ae34b2d370e1ec638b9ba60c569604c0e1a02b91ffcbd295ba0fa",
+    "cantidad_lineas": 2699,
+    "url": "https://github.com/isbogdanov/riscv-core-dv-uvm/blob/main/sample_logs/uvm_classic/uvm_run.log",
+    "git_blob_sha": "a37d3de0f48042554824d38efe10e4cc253818d9",
+    "objeto_git_corresponde_a": "contenido del log publicado",
+    "metodo": "Contenido UTF-8 del conector GitHub; copia local sin líneas vacías finales; hashes en hashes_locales.json. No ejecutado localmente.",
+    "simulacion_ejecutada_localmente": false
+  },
+  "metadatos": {
+    "test": {
+      "valor": "riscv_base_test",
+      "lineas_log": [
+        5,
+        59
+      ],
+      "estado": "observado"
+    },
+    "seed": {
+      "valor": null,
+      "lineas_log": [],
+      "estado": "no_observado"
+    },
+    "simulador": {
+      "valor": "Questa Intel Starter FPGA Edition 2024.3",
+      "lineas_log": [
+        9,
+        10
+      ]
+    },
+    "uvm": {
+      "valor": "UVM 1.2",
+      "lineas_log": [
+        36
+      ]
+    },
+    "revision_rtl_testbench": null,
+    "identificacion_test": {
+      "uvm_testname_comando": [
+        {
+          "valor": "riscv_base_test",
+          "linea_log": 5,
+          "texto_original": "# vsim -c -sv_lib /home/bogdanov/altera/24.1std/questa_fse/uvm-1.2/linux_x86_64/uvm_dpi -cpppath /usr/bin/gcc -do \"run -all; quit\" uvm_top \"+UVM_TESTNAME=riscv_base_test\" \"+MEM_FILE=out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem\" \"+SPIKE_LOG=out_2025-06-29/spike_sim/riscv_arithmetic_basic_test_17216.log\" "
+        }
+      ],
+      "rntst": [
+        {
+          "valor": "riscv_base_test",
+          "linea_log": 59,
+          "texto_original": "# UVM_INFO @ 0: reporter [RNTST] Running test riscv_base_test..."
+        }
+      ],
+      "test_name": "riscv_base_test",
+      "estado": "concordante",
+      "es_criterio_fail": false,
+      "regla": "Conservar ambos orígenes; si difieren no elegir uno silenciosamente. UVM_TESTNAME no es severidad."
+    }
+  },
+  "pregunta_del_caso": "¿Qué significa el warning de carga y basta el cierre con ECALL para certificar éxito funcional?",
+  "resultado": {
+    "local": "INDETERMINADO",
+    "declarado": {
+      "valor": "ECALL detectado y cierre UVM",
+      "lineas_log": [
+        2651,
+        2652,
+        2672,
+        2696,
+        2697
+      ],
+      "nota": "No equivale a TEST PASSED verificado."
+    },
+    "estado_ejecucion": "COMPLETA",
+    "criterio": "Se observa ECALL y finalización con cero errores UVM, pero no se ha validado que ese criterio certifique éxito arquitectónico.",
+    "evidencia_lineas": [
+      2651,
+      2652,
+      2679,
+      2680
+    ],
+    "cierre_lineas": [
+      2696,
+      2699
+    ],
+    "causa_raiz": {
+      "estado": "no_determinada",
+      "valor": null
+    },
+    "funcional": "INDETERMINADO",
+    "alcance_local": "Resultado funcional según la evidencia del test; no acredita correlación de transporte.",
+    "aceptacion_con_correlacion_obligatoria": "INDETERMINADO",
+    "razon_aceptacion": "Si se exige correlación para aceptar el test, NOT_OBSERVABLE impide declarar PASS de aceptación.",
+    "dato_faltante_para_resolver": "Criterio de éxito arquitectónico documentado y evidencia de ambos extremos."
+  },
+  "cobertura_anotacion": {
+    "modo": "seleccion_de_eventos",
+    "inventario_exhaustivo": false,
+    "categorias_completas_certificadas": [],
+    "habilitada_para_validar_totales": false,
+    "alcance_actual": "Eventos seleccionados, sus referencias y relaciones candidatas; los resúmenes se conservan aparte.",
+    "pendiente_para_totales": "Elegir categoría y etapa, revisar todo el intervalo de la corrida, completar sus eventos o confirmar ausencia, contrastar resumen y obtener revisión independiente."
+  },
+  "eventos": [
+    {
+      "event_id": "E01",
+      "etapa": "simulacion",
+      "tipo": "carga_memoria",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "cpu_flow_predictor",
+      "log_line_start": 74,
+      "log_line_end": 74,
+      "texto_original": "# UVM_INFO uvm_classic/predictors/cpu_flow_predictor.sv(30) @ 0: uvm_test_top.env.flow_predictor [cpu_flow_predictor] Loading instruction memory for predictor from file: out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem",
+      "tiempo": {
+        "valor_literal": "0",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "uvm_test_top.env.flow_predictor",
+      "source_file": "uvm_classic/predictors/cpu_flow_predictor.sv",
+      "source_line": 30,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [
+        {
+          "clase": "archivo_memoria",
+          "valor": "out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem",
+          "origen": "explicito_log",
+          "lineas_log": [
+            74
+          ]
+        }
+      ],
+      "campos_observados": {
+        "memory_file": "out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem"
+      },
+      "hecho": "El predictor carga el archivo de memoria indicado.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    },
+    {
+      "event_id": "E02",
+      "etapa": "simulacion",
+      "tipo": "warning_simulador",
+      "severidad_original": "Warning",
+      "dominio_severidad": "simulador",
+      "message_id": "vsim-PLI-8707",
+      "log_line_start": 75,
+      "log_line_end": 77,
+      "texto_original": "# ** Warning: (vsim-PLI-8707) No address specified on line 1 of file \"out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem\" \n# while loading into associative array using readmem command.    : uvm_classic/predictors/cpu_flow_predictor.sv(31)\n#    Time: 0 ps  Iteration: 62  Region: /uvm_pkg::uvm_task_phase::execute",
+      "tiempo": {
+        "valor_literal": "0",
+        "unidad": "ps",
+        "origen": "explicito_log",
+        "nota": null
+      },
+      "component_path": null,
+      "source_file": "uvm_classic/predictors/cpu_flow_predictor.sv",
+      "source_line": 31,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [
+        {
+          "clase": "region_ejecucion",
+          "valor": "/uvm_pkg::uvm_task_phase::execute",
+          "origen": "explicito_log",
+          "lineas_log": [
+            77
+          ]
+        },
+        {
+          "clase": "archivo_memoria",
+          "valor": "out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem",
+          "origen": "explicito_log",
+          "lineas_log": [
+            75,
+            76,
+            77
+          ]
+        }
+      ],
+      "campos_observados": {
+        "memory_file": "out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem",
+        "linea_archivo_memoria": 1
+      },
+      "hecho": "No se especifica dirección en la línea 1 del archivo de memoria al cargar un array asociativo.",
+      "interpretacion": null,
+      "es_mensaje_individual": true,
+      "pista_rca": {
+        "conservar": true,
+        "disparador_automatico_fail": false,
+        "eventos_contexto": [
+          "E01",
+          "E03a",
+          "E03b"
+        ],
+        "criterio_contexto": "Proximidad de hasta cinco líneas físicas; ayuda a navegar, no demuestra relación causal.",
+        "relevancia": "carga_memoria",
+        "relacion_con_fallo": "no_demostrada",
+        "causa_raiz_confirmada": false
+      }
+    },
+    {
+      "event_id": "E03a",
+      "etapa": "simulacion",
+      "tipo": "carga_memoria",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "riscv_memory_file_sequence",
+      "log_line_start": 78,
+      "log_line_end": 78,
+      "texto_original": "# UVM_INFO uvm_classic/sequences/riscv_instruction_sequences.sv(23) @ 0: uvm_test_top.env.flow_agent.sequencer@@memory_seq [riscv_memory_file_sequence] Loading memory file: out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem",
+      "tiempo": {
+        "valor_literal": "0",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "uvm_test_top.env.flow_agent.sequencer@@memory_seq",
+      "source_file": "uvm_classic/sequences/riscv_instruction_sequences.sv",
+      "source_line": 23,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [
+        {
+          "clase": "archivo_memoria",
+          "valor": "out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem",
+          "origen": "explicito_log",
+          "lineas_log": [
+            78
+          ]
+        },
+        {
+          "clase": "referencia_secuencia",
+          "valor": "uvm_test_top.env.flow_agent.sequencer@@memory_seq",
+          "origen": "explicito_log",
+          "nota": "Ruta del emisor conservada literal; no es signal_path."
+        }
+      ],
+      "campos_observados": {
+        "memory_file": "out_2025-06-29/asm_test/riscv_arithmetic_basic_test_17216.o.mem"
+      },
+      "hecho": "La secuencia anuncia carga del mismo archivo.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    },
+    {
+      "event_id": "E03b",
+      "etapa": "simulacion",
+      "tipo": "inventario_instrucciones",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "riscv_memory_file_sequence",
+      "log_line_start": 79,
+      "log_line_end": 79,
+      "texto_original": "# UVM_INFO uvm_classic/sequences/riscv_instruction_sequences.sv(39) @ 0: uvm_test_top.env.flow_agent.sequencer@@memory_seq [riscv_memory_file_sequence] Found 810 instructions in memory file",
+      "tiempo": {
+        "valor_literal": "0",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "uvm_test_top.env.flow_agent.sequencer@@memory_seq",
+      "source_file": "uvm_classic/sequences/riscv_instruction_sequences.sv",
+      "source_line": 39,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [
+        {
+          "clase": "referencia_secuencia",
+          "valor": "uvm_test_top.env.flow_agent.sequencer@@memory_seq",
+          "origen": "explicito_log",
+          "nota": "Ruta del emisor conservada literal; no es signal_path."
+        }
+      ],
+      "campos_observados": {
+        "cantidad_instrucciones": 810
+      },
+      "hecho": "La secuencia declara 810 instrucciones.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    },
+    {
+      "event_id": "E04a",
+      "etapa": "simulacion",
+      "tipo": "deteccion_ecall",
+      "severidad_original": null,
+      "dominio_severidad": "texto_sin_severidad",
+      "message_id": null,
+      "log_line_start": 2651,
+      "log_line_end": 2651,
+      "texto_original": "# ECALL instruction detected at PC=0x80000a08. Test will complete via UVM.",
+      "tiempo": {
+        "valor_literal": null,
+        "unidad": null,
+        "origen": "no_observado",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": null,
+      "source_file": null,
+      "source_line": null,
+      "origen_source": "no_observado",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [
+        {
+          "clase": "contador_programa",
+          "valor": "0x80000a08",
+          "origen": "explicito_log",
+          "lineas_log": [
+            2651
+          ]
+        }
+      ],
+      "campos_observados": {
+        "pc": "0x80000a08"
+      },
+      "hecho": "Aviso sin severidad de ECALL y finalización vía UVM.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    },
+    {
+      "event_id": "E04b",
+      "etapa": "simulacion",
+      "tipo": "deteccion_ecall",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "cpu_commit_scoreboard",
+      "log_line_start": 2652,
+      "log_line_end": 2652,
+      "texto_original": "# UVM_INFO uvm_classic/subscribers/cpu_commit_scoreboard.sv(101) @ 6445000: uvm_test_top.env.commit_scoreboard [cpu_commit_scoreboard] ECALL detected at PC 0x80000a08 - stopping comparison",
+      "tiempo": {
+        "valor_literal": "6445000",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "uvm_test_top.env.commit_scoreboard",
+      "source_file": "uvm_classic/subscribers/cpu_commit_scoreboard.sv",
+      "source_line": 101,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [
+        {
+          "clase": "contador_programa",
+          "valor": "0x80000a08",
+          "origen": "explicito_log",
+          "lineas_log": [
+            2652
+          ]
+        }
+      ],
+      "campos_observados": {
+        "pc": "0x80000a08"
+      },
+      "hecho": "El scoreboard detiene comparación al detectar ECALL.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    }
+  ],
+  "agregados": [
+    {
+      "aggregate_id": "A01",
+      "tipo": "UVM_REPORT_SUMMARY",
+      "log_line_start": 2674,
+      "log_line_end": 2694,
+      "texto_original": "# --- UVM Report Summary ---\n# \n# ** Report counts by severity\n# UVM_INFO : 1971\n# UVM_WARNING :    0\n# UVM_ERROR :    0\n# UVM_FATAL :    0\n# ** Report counts by id\n# [AGENT]     2\n# [CONFIG]     4\n# [DRIVER]     2\n# [ENV]     2\n# [Questa UVM]     2\n# [RNTST]     1\n# [TEST]     7\n# [TEST_DONE]     1\n# [UVM/RELNOTES]     1\n# [cpu_commit_scoreboard]  1294\n# [cpu_flow_predictor]     1\n# [cpu_flow_scoreboard]   651\n# [riscv_memory_file_sequence]     3",
+      "conteos_declarados": {
+        "UVM_INFO": 1971,
+        "UVM_WARNING": 0,
+        "UVM_ERROR": 0,
+        "UVM_FATAL": 0
+      },
+      "es_evento_individual": false,
+      "regla": "No sumar estas filas a los mensajes individuales; INFO puede excluir el anuncio del propio resumen."
+    }
+  ],
+  "relaciones": [
+    {
+      "relation_id": "G01",
+      "miembros": [
+        "E01",
+        "E02",
+        "E03a",
+        "E03b"
+      ],
+      "tipo": "carga_mismo_archivo",
+      "calificacion": "candidata",
+      "evidencia": "L74–79: mismo archivo de memoria y contexto de carga de secuencia.",
+      "limite": "El warning no demuestra defecto del DUT ni impacto en el resultado.",
+      "causalidad_demostrada": false,
+      "alternativas": [
+        "Coincidencia de contexto sin causa común demostrada."
+      ]
+    },
+    {
+      "relation_id": "G02",
+      "miembros": [
+        "E04a",
+        "E04b"
+      ],
+      "tipo": "misma_observacion_ecall",
+      "calificacion": "candidata",
+      "evidencia": "L2651 y L2652 citan PC 0x80000a08 y finalización/detención.",
+      "limite": "Dos reportes de contexto compartido, sin causa raíz demostrada.",
+      "causalidad_demostrada": false,
+      "alternativas": [
+        "Coincidencia de contexto sin causa común demostrada."
+      ]
+    }
+  ],
+  "vinculos_entre_casos": [],
+  "limitaciones": [
+    "La ficha no certifica un inventario exhaustivo de todas las categorías.",
+    "No se han observado rutas de señales RTL en los eventos seleccionados; no confundir componentes o PC con señales.",
+    "No existe revisión humana independiente registrada.",
+    "17216 forma parte de un nombre de programa; no se usa como seed.",
+    "El emisor con @@memory_seq se conserva literal; es una referencia de secuencia, no una señal RTL.",
+    "Un warning del simulador (L75–77, cierre L2699) puede coexistir con UVM_WARNING=0; son dominios distintos."
+  ],
+  "conteos_anotados": {
+    "dominio": "Sólo mensajes individuales seleccionados, incluidos resúmenes de scoreboard con encabezado UVM; excluye el agregado UVM Report Summary.",
+    "por_severidad_uvm": {
+      "UVM_INFO": 4,
+      "UVM_WARNING": 0,
+      "UVM_ERROR": 0,
+      "UVM_FATAL": 0
+    },
+    "cantidad_registros_evento": 6,
+    "no_representan_totales_de_corrida": true
+  },
+  "observabilidad_monitor_scoreboard": {
+    "estado_global": "NOT_OBSERVABLE",
+    "alcance_revision": "Eventos seleccionados y contexto de la muestra; no inventario exhaustivo de publicaciones TLM.",
+    "monitor_publicaciones_identificadas": [],
+    "scoreboard_recepciones_por_transaccion_identificadas": [],
+    "evidencia_contextual_scoreboard_event_ids": [
+      "E04b"
+    ],
+    "pares_confirmados": [],
+    "cantidad_pares_confirmados": null,
+    "obligatoria_para_aceptacion_del_test": "no_documentado",
+    "motivo": "No se dispone de mensajes identificados en ambos extremos para demostrar publicación y recepción de una misma transacción. Un match o resumen del scoreboard no demuestra ese transporte.",
+    "datos_faltantes": [
+      "Registro de publicación del monitor y recepción/consumo correspondiente en scoreboard.",
+      "Clave de identidad, canal, campos comparables y reglas de reset, reordenamiento, flush y reutilización de IDs.",
+      "Verbosidad y configuración completas de la corrida."
+    ],
+    "clave_propuesta": {
+      "comunes": [
+        "run_id",
+        "test_name",
+        "seed",
+        "interfaz",
+        "canal",
+        "sentido",
+        "transaction_id",
+        "ocurrencia",
+        "segmento_reset_flush"
+      ],
+      "opcionales": [
+        "beat_id",
+        "direccion_memoria"
+      ],
+      "nota": "No todos son obligatorios para todo protocolo. TID o datos iguales no garantizan identidad única."
+    },
+    "campos_comparables_propuestos": [
+      "datos o huella verificable",
+      "campos de control pertinentes al protocolo"
+    ],
+    "reglas_pendientes": [
+      "Fijar qué campos se conservan y qué transformaciones son válidas.",
+      "Acordar correspondencia 1:1 o 1:N, reordenamiento, reintentos y descartes esperados.",
+      "Documentar por test si la correlación es obligatoria para aceptación."
+    ],
+    "regla_ausencias": "No clasificar pérdidas ni campos distintos cuando falta observabilidad suficiente; cero pares anotados no demuestra cero transacciones."
+  },
+  "pregunta_rca_correlacion": "¿Qué transacciones publicadas por el monitor llegaron al scoreboard, cuáles faltan o difieren y qué evidencia permite comprobarlo?",
+  "historial_adecuacion": {
+    "version": "1.2",
+    "fecha": "2026-10-30",
+    "motivo": "Ruta técnica vigente y prioridad de fuentes; aprobación del estudiante en esta conversación.",
+    "cambios": [
+      "Observabilidad y aceptación separadas del resultado funcional.",
+      "UVM_TESTNAME/RNTST con procedencia.",
+      "Warnings como pistas; selección parcial conservada."
+    ]
+  }
+}

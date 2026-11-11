@@ -1,0 +1,17 @@
+[
+  {
+    "archivo": "burst_read_test_seed1_questa_FAIL.log",
+    "lineas": 200,
+    "sha256": "E8F50404A2547E12E46179ED152360F5192417E171B9E714AE29AF8AD8EE1089"
+  },
+  {
+    "archivo": "burst_read_test_seed1_questa.log",
+    "lineas": 196,
+    "sha256": "72C7D449A9326AA5FCAB44A3BCB81505680487894A5F174EFB58F1F44C597FC3"
+  },
+  {
+    "archivo": "riscv_uvm_run.log",
+    "lineas": 2699,
+    "sha256": "298604B8469AE34B2D370E1EC638B9BA60C569604C0E1A02B91FFCBD295BA0FA"
+  }
+]

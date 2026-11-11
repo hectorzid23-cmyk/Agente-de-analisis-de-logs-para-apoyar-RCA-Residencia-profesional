@@ -1,0 +1,15 @@
+# FIXTURE SINTETICO: no procede de una simulacion ni de un repositorio externo.
+# Referencias fixture_*.sv ficticias; unidad de tiempo de este escenario: ns.
+# +UVM_TESTNAME=N02_pass_con_warning -sv_seed 1
+# UVM_INFO fixture_test.sv(10) @ 0: uvm_test_top [RNTST] Running test N02_pass_con_warning...
+# UVM_WARNING fixture_monitor.sv(12) @ 5: uvm_test_top.env.monitor [WARMUP] First sample ignored during documented warmup
+# UVM_INFO fixture_checker.sv(20) @ 20: uvm_test_top.env.checker [CHECK_OK] expected=0x11 observed=0x11
+# UVM_INFO fixture_test.sv(30) @ 30: uvm_test_top [TEST_RESULT] TEST PASSED
+# --- UVM Report Summary ---
+# ** Report counts by severity
+# UVM_INFO : 3
+# UVM_WARNING : 1
+# UVM_ERROR : 0
+# UVM_FATAL : 0
+# ** Note: $finish
+# End time: 00:00:01; fixture run closed

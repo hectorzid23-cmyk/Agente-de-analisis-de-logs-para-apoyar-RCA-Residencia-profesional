@@ -1,0 +1,7 @@
+# FIXTURE SINTETICO: no procede de una simulacion ni de un repositorio externo.
+# Referencias fixture_*.sv ficticias; unidad de tiempo de este escenario: ns.
+# +UVM_TESTNAME=I01_error_herramienta -sv_seed 1
+# simulator launch requested for fixture_top
+# Error: License checkout failed; required simulation license unavailable
+# Simulation was not started
+# Process exited with code 1

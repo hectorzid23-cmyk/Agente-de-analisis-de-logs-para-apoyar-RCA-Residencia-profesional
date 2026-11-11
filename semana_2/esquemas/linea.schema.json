@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "kind": {
+      "const": "raw_line"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^R-[a-f0-9]{32}$"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^R-[a-f0-9]{32}:F[0-9]{4,}:[1-9][0-9]*$"
+    },
+    "file_id": {
+      "type": "string",
+      "pattern": "^F[0-9]{4,}$"
+    },
+    "log_file": {
+      "type": "string"
+    },
+    "log_line_start": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "log_line_end": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "texto_original": {
+      "type": "string"
+    },
+    "terminador": {
+      "enum": [
+        "",
+        "\r",
+        "\n",
+        "\r\n"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "run_id",
+    "event_id",
+    "file_id",
+    "log_file",
+    "log_line_start",
+    "log_line_end",
+    "texto_original",
+    "terminador"
+  ],
+  "additionalProperties": false
+}

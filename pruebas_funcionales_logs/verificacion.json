@@ -1,0 +1,59 @@
+{
+  "estado": "OK",
+  "casos": 10,
+  "sinteticos": 8,
+  "referencias_reales": 2,
+  "alcance": "Integridad y coherencia de fixtures; parser no ejecutado.",
+  "comprobaciones": [
+    {
+      "case_id": "N01_pass_limpio",
+      "sha256": "4ea344444bbe1d08a7fef0986c1f78626ec6eed7c32aeb223dc34b98519c4ab7",
+      "estado": "OK"
+    },
+    {
+      "case_id": "N02_pass_con_warning",
+      "sha256": "d925938daeb8e15cb05a29f3e41adfe8f50443176120cf52ab398cb0a750cb9d",
+      "estado": "OK"
+    },
+    {
+      "case_id": "N03_pass_transporte_match",
+      "sha256": "60a465f4f9f34735638061fb5540d1c1ddad52cb560387fe177460ced24cd259",
+      "estado": "OK"
+    },
+    {
+      "case_id": "F01_error_scoreboard",
+      "sha256": "f8c663153e2200272d5083173b6132014b1d31164ecc3ddf6205d057d51a743b",
+      "estado": "OK"
+    },
+    {
+      "case_id": "F02_fatal_configuracion",
+      "sha256": "68509579f1b06db3e63ac6fe55597f46edfd39a2ace292294bcdf9689d60213f",
+      "estado": "OK"
+    },
+    {
+      "case_id": "F03_assertion_fallida",
+      "sha256": "b28c0225e744fc9a10ab3bd64ffbcd30ada7a1e284f0dd438c0c1dddb7c669de",
+      "estado": "OK"
+    },
+    {
+      "case_id": "F04_transporte_dato_alterado",
+      "sha256": "bd56e943c40c8c95e899744943187099afc39e5f7d39633c8e633cca80e3e47d",
+      "estado": "OK"
+    },
+    {
+      "case_id": "I01_error_herramienta",
+      "sha256": "a2e30c8c62041bee09a6ab481eeeb69d6385a68b47ec60e5f840d3579073245a",
+      "estado": "OK"
+    },
+    {
+      "case_id": "R01_axi4_pass",
+      "sha256": "241d74cf1cb90b033814cb8bd1f1961b83a99372bb158aba379cdfa6ca223244",
+      "estado": "OK"
+    },
+    {
+      "case_id": "R02_axi4_fail",
+      "sha256": "e8f50404a2547e12e46179ed152360f5192417e171b9e714ae29af8ad8ee1089",
+      "estado": "OK"
+    }
+  ]
+}

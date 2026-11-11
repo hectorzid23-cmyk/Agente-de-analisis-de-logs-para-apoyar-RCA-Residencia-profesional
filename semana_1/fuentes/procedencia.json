@@ -1,0 +1,23 @@
+[
+  {
+    "archivo": "burst_read_test_seed1_questa_FAIL.log",
+    "url": "https://github.com/Tharunreddym/axi4-verification/blob/main/logs/burst_read_test_seed1_questa_FAIL.log",
+    "git_blob_sha": "27bdb9889d7b93ffa5c96b1e0b359cc5f82bd76a",
+    "consulta": "2026-10-26",
+    "metodo": "Contenido UTF-8 del conector GitHub; copia local sin líneas vacías finales; hashes en hashes_locales.json. No ejecutado localmente."
+  },
+  {
+    "archivo": "burst_read_test_seed1_questa.log",
+    "url": "https://github.com/Tharunreddym/axi4-verification/blob/main/logs/burst_read_test_seed1_questa.log",
+    "git_blob_sha": "0a43a32b68a4b10f3f08b3c02c48f962d750471b",
+    "consulta": "2026-10-26",
+    "metodo": "Contenido UTF-8 del conector GitHub; copia local sin líneas vacías finales; hashes en hashes_locales.json. No ejecutado localmente."
+  },
+  {
+    "archivo": "riscv_uvm_run.log",
+    "url": "https://github.com/isbogdanov/riscv-core-dv-uvm/blob/main/sample_logs/uvm_classic/uvm_run.log",
+    "git_blob_sha": "a37d3de0f48042554824d38efe10e4cc253818d9",
+    "consulta": "2026-10-26",
+    "metodo": "Contenido UTF-8 del conector GitHub; copia local sin líneas vacías finales; hashes en hashes_locales.json. No ejecutado localmente."
+  }
+]

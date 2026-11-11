@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "kind": "raw_line",
+  "run_id": "R-a759654fd4c541049bfac1e6f354fda5",
+  "event_id": "R-a759654fd4c541049bfac1e6f354fda5:F0001:3",
+  "file_id": "F0001",
+  "log_file": "pruebas_funcionales_logs/casos/N01_pass_limpio.log",
+  "log_line_start": 3,
+  "log_line_end": 3,
+  "texto_original": "# +UVM_TESTNAME=N01_pass_limpio -sv_seed 1",
+  "terminador": "\n"
+}

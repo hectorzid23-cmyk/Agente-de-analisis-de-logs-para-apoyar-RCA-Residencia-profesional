@@ -1,0 +1,26 @@
+[
+  {
+    "archivo": "uvm_scoreboard_monitor_agent_env.log",
+    "lineas": 248,
+    "sha256": "A1891CF957F3EB0A423F2313937095C985B81B3DD5CCD08A52888A320B520242",
+    "conteos_resumen": {
+      "INFO": 5,
+      "WARNING": 2,
+      "ERROR": 0,
+      "FATAL": 0
+    },
+    "eventos_error": 0
+  },
+  {
+    "archivo": "uvm_test_run_test.log",
+    "lineas": 167,
+    "sha256": "06A0EA555AD34498BB4BEEA05ABA87535A10C14D3AFB83A3B30F182BFD35F24B",
+    "conteos_resumen": {
+      "INFO": 4,
+      "WARNING": 2,
+      "ERROR": 0,
+      "FATAL": 0
+    },
+    "eventos_error": 0
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "casos": 43,
+  "fuentes": 9,
+  "grupos_equivalencia": 6,
+  "verificacion": "OK",
+  "alcance": "Bytes, hashes, decodificación estricta y equivalencia. No evalúa el parser.",
+  "casos_invalidos": 7
+}

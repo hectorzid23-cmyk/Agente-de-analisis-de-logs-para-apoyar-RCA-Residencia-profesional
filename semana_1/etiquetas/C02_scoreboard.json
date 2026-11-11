@@ -1,0 +1,364 @@
+{
+  "annotation_version": "1.2",
+  "case_id": "C02",
+  "run_id_manual": "R02",
+  "titulo": "Estímulo y comparación coincidente",
+  "fecha": "2026-10-30",
+  "politicas": [
+    "LOCAL-PF-1.1",
+    "LOCAL-REF-1.1"
+  ],
+  "revision": {
+    "autor": "Asistente, a solicitud del estudiante",
+    "estado": "propuesto",
+    "revisor_independiente": null,
+    "fecha_revision": null
+  },
+  "fuente": {
+    "log_file": "../../fuentes_logs_revision/muestras/uvm_scoreboard_monitor_agent_env.log",
+    "base_ruta": "directorio_de_esta_ficha",
+    "sha256_local": "a1891cf957f3eb0a423f2313937095c985b81b3dd5ccd08a52888a320b520242",
+    "cantidad_lineas": 248,
+    "url": "https://github.com/chipsalliance/sv-tests-results/blob/gh-pages/logs/Verilator/testbenches/uvm_scoreboard_monitor_agent_env.sv.log.html",
+    "git_blob_sha": "905c5df49c100ed2fc867928e281e1644322c095",
+    "objeto_git_corresponde_a": "HTML original",
+    "metodo": "Extraer cada bloque pre de section.log, quitar etiquetas internas, decodificar entidades HTML y conservar orden de líneas. Incluye compilación y simulación.",
+    "simulacion_ejecutada_localmente": false
+  },
+  "metadatos": {
+    "test": {
+      "valor": null,
+      "lineas_log": [],
+      "estado": "no_observado"
+    },
+    "seed": {
+      "valor": null,
+      "lineas_log": [],
+      "estado": "no_observado"
+    },
+    "simulador": {
+      "valor": "Verilator 5.053 devel",
+      "lineas_log": [
+        246
+      ]
+    },
+    "uvm": {
+      "valor": "Accellera UVM 2020.3.1",
+      "lineas_log": [
+        215
+      ]
+    },
+    "revision_rtl_testbench": null,
+    "identificacion_test": {
+      "uvm_testname_comando": [],
+      "rntst": [
+        {
+          "valor": null,
+          "linea_log": 224,
+          "texto_original": "UVM_INFO @ 0: reporter [RNTST] Running test ..."
+        }
+      ],
+      "test_name": null,
+      "estado": "no_observado",
+      "es_criterio_fail": false,
+      "regla": "Conservar ambos orígenes; si difieren no elegir uno silenciosamente. UVM_TESTNAME no es severidad."
+    }
+  },
+  "pregunta_del_caso": "¿Qué demuestra la comparación coincidente y qué falta para aceptar el test y comprobar el transporte monitor → scoreboard?",
+  "resultado": {
+    "local": "INDETERMINADO",
+    "declarado": {
+      "valor": "Comparator match",
+      "lineas_log": [
+        228
+      ],
+      "nota": "No es un marcador universal TEST PASSED."
+    },
+    "estado_ejecucion": "COMPLETA",
+    "criterio": "La comparación 2 == 2 y el cierre son hechos, pero no hay marcador explícito de éxito global ni excepción del test documentada. La correlación de transporte tampoco es observable.",
+    "evidencia_lineas": [
+      224,
+      227,
+      228,
+      235,
+      236,
+      245,
+      247
+    ],
+    "cierre_lineas": [
+      245,
+      248
+    ],
+    "causa_raiz": {
+      "estado": "no_determinada",
+      "valor": null
+    },
+    "funcional": "INDETERMINADO",
+    "alcance_local": "Resultado funcional según la evidencia del test; no acredita correlación de transporte.",
+    "aceptacion_con_correlacion_obligatoria": "INDETERMINADO",
+    "razon_aceptacion": "Si se exige correlación para aceptar el test, NOT_OBSERVABLE impide declarar PASS de aceptación.",
+    "dato_faltante_para_resolver": "Marcador explícito de éxito o excepción de test documentada; mensajes de ambos extremos para correlación."
+  },
+  "cobertura_anotacion": {
+    "modo": "seleccion_de_eventos",
+    "inventario_exhaustivo": false,
+    "categorias_completas_certificadas": [],
+    "habilitada_para_validar_totales": false,
+    "alcance_actual": "Eventos seleccionados, sus referencias y relaciones candidatas; los resúmenes se conservan aparte.",
+    "pendiente_para_totales": "Elegir categoría y etapa, revisar todo el intervalo de la corrida, completar sus eventos o confirmar ausencia, contrastar resumen y obtener revisión independiente."
+  },
+  "eventos": [
+    {
+      "event_id": "E01",
+      "etapa": "simulacion",
+      "tipo": "warning_entorno",
+      "severidad_original": "UVM_WARNING",
+      "dominio_severidad": "UVM",
+      "message_id": "NO_DPI_USED",
+      "log_line_start": 223,
+      "log_line_end": 223,
+      "texto_original": "UVM_WARNING third_party/tests/uvm/src/base/uvm_root.svh(549) @ 0: reporter [NO_DPI_USED] We are thinking of removing support for UVM_NO_DPI.  Please try this test without it and evaluate the impact",
+      "tiempo": {
+        "valor_literal": "0",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "reporter",
+      "source_file": "third_party/tests/uvm/src/base/uvm_root.svh",
+      "source_line": 549,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [],
+      "campos_observados": {},
+      "hecho": "Soporte de UVM_NO_DPI advertido.",
+      "interpretacion": null,
+      "es_mensaje_individual": true,
+      "pista_rca": {
+        "conservar": true,
+        "disparador_automatico_fail": false,
+        "eventos_contexto": [
+          "E02",
+          "E03",
+          "E04"
+        ],
+        "criterio_contexto": "Proximidad de hasta cinco líneas físicas; ayuda a navegar, no demuestra relación causal.",
+        "relevancia": "entorno_DPI",
+        "relacion_con_fallo": "no_demostrada",
+        "causa_raiz_confirmada": false
+      }
+    },
+    {
+      "event_id": "E02",
+      "etapa": "simulacion",
+      "tipo": "warning_entorno",
+      "severidad_original": "UVM_WARNING",
+      "dominio_severidad": "UVM",
+      "message_id": "NO_VISIT_CHECK",
+      "log_line_start": 226,
+      "log_line_end": 226,
+      "texto_original": "UVM_WARNING third_party/tests/uvm/src/base/uvm_traversal.svh(314) @ 0: reporter [NO_VISIT_CHECK] Because UVM_REGEX_NO_DPI is defined, no uvm component name constraints will be checked",
+      "tiempo": {
+        "valor_literal": "0",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "reporter",
+      "source_file": "third_party/tests/uvm/src/base/uvm_traversal.svh",
+      "source_line": 314,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [],
+      "campos_observados": {},
+      "hecho": "No se comprobarán restricciones de nombres de componentes.",
+      "interpretacion": null,
+      "es_mensaje_individual": true,
+      "pista_rca": {
+        "conservar": true,
+        "disparador_automatico_fail": false,
+        "eventos_contexto": [
+          "E01",
+          "E03",
+          "E04"
+        ],
+        "criterio_contexto": "Proximidad de hasta cinco líneas físicas; ayuda a navegar, no demuestra relación causal.",
+        "relevancia": "entorno_DPI",
+        "relacion_con_fallo": "no_demostrada",
+        "causa_raiz_confirmada": false
+      }
+    },
+    {
+      "event_id": "E03",
+      "etapa": "simulacion",
+      "tipo": "estimulo",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "RESULT",
+      "log_line_start": 227,
+      "log_line_end": 227,
+      "texto_original": "UVM_INFO tests/testbenches/uvm_scoreboard_monitor_agent_env.sv(184) @ 0: env [RESULT] Writing 2 to input interface",
+      "tiempo": {
+        "valor_literal": "0",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "env",
+      "source_file": "tests/testbenches/uvm_scoreboard_monitor_agent_env.sv",
+      "source_line": 184,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [],
+      "campos_observados": {
+        "valor": 2
+      },
+      "hecho": "Se informa escritura del valor 2 a la interfaz de entrada.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    },
+    {
+      "event_id": "E04",
+      "etapa": "simulacion",
+      "tipo": "comparacion_coincidente",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "RESULT",
+      "log_line_start": 228,
+      "log_line_end": 228,
+      "texto_original": "UVM_INFO tests/testbenches/uvm_scoreboard_monitor_agent_env.sv(144) @ 15: env.comp [RESULT] Comparator match   2 ==           2",
+      "tiempo": {
+        "valor_literal": "15",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "env.comp",
+      "source_file": "tests/testbenches/uvm_scoreboard_monitor_agent_env.sv",
+      "source_line": 144,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [],
+      "campos_observados": {
+        "operando_izquierdo": 2,
+        "operando_derecho": 2
+      },
+      "hecho": "El comparador informa coincidencia de 2 y 2.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    }
+  ],
+  "agregados": [
+    {
+      "aggregate_id": "A01",
+      "tipo": "UVM_REPORT_SUMMARY",
+      "log_line_start": 230,
+      "log_line_end": 243,
+      "texto_original": "--- UVM Report Summary ---\n\n** Report counts by severity\nUVM_INFO :    5\nUVM_WARNING :    2\nUVM_ERROR :    0\nUVM_FATAL :    0\n** Report counts by id\n[NO_DPI_USED]     1\n[NO_VISIT_CHECK]     1\n[RESULT]     2\n[RNTST]     1\n[UVM/COMP/NAMECHECK]     1\n[UVM/RELNOTES]     1",
+      "conteos_declarados": {
+        "UVM_INFO": 5,
+        "UVM_WARNING": 2,
+        "UVM_ERROR": 0,
+        "UVM_FATAL": 0
+      },
+      "es_evento_individual": false,
+      "regla": "No sumar estas filas a los mensajes individuales; INFO puede excluir el anuncio del propio resumen."
+    }
+  ],
+  "relaciones": [
+    {
+      "relation_id": "G01",
+      "miembros": [
+        "E03",
+        "E04"
+      ],
+      "tipo": "estimulo_comprobacion",
+      "calificacion": "candidata",
+      "evidencia": "L227 y L228: orden observado y valor 2 compartido.",
+      "limite": "Relación candidata de estímulo/comprobación; no demuestra publicación del monitor y recepción de la misma transacción en scoreboard ni permite declarar PASS global.",
+      "causalidad_demostrada": false,
+      "alternativas": [
+        "Coincidencia de contexto sin causa común demostrada."
+      ]
+    }
+  ],
+  "vinculos_entre_casos": [],
+  "limitaciones": [
+    "La ficha no certifica un inventario exhaustivo de todas las categorías.",
+    "No se han observado rutas de señales RTL en los eventos seleccionados; no confundir componentes o PC con señales.",
+    "No existe revisión humana independiente registrada.",
+    "L224 contiene Running test ... sin nombre concreto; el nombre del archivo no se usa como test observado."
+  ],
+  "conteos_anotados": {
+    "dominio": "Sólo mensajes individuales seleccionados, incluidos resúmenes de scoreboard con encabezado UVM; excluye el agregado UVM Report Summary.",
+    "por_severidad_uvm": {
+      "UVM_INFO": 2,
+      "UVM_WARNING": 2,
+      "UVM_ERROR": 0,
+      "UVM_FATAL": 0
+    },
+    "cantidad_registros_evento": 4,
+    "no_representan_totales_de_corrida": true
+  },
+  "observabilidad_monitor_scoreboard": {
+    "estado_global": "NOT_OBSERVABLE",
+    "alcance_revision": "Eventos seleccionados y contexto de la muestra; no inventario exhaustivo de publicaciones TLM.",
+    "monitor_publicaciones_identificadas": [],
+    "scoreboard_recepciones_por_transaccion_identificadas": [],
+    "evidencia_contextual_scoreboard_event_ids": [
+      "E04"
+    ],
+    "pares_confirmados": [],
+    "cantidad_pares_confirmados": null,
+    "obligatoria_para_aceptacion_del_test": "no_documentado",
+    "motivo": "No se dispone de mensajes identificados en ambos extremos para demostrar publicación y recepción de una misma transacción. Un match o resumen del scoreboard no demuestra ese transporte.",
+    "datos_faltantes": [
+      "Registro de publicación del monitor y recepción/consumo correspondiente en scoreboard.",
+      "Clave de identidad, canal, campos comparables y reglas de reset, reordenamiento, flush y reutilización de IDs.",
+      "Verbosidad y configuración completas de la corrida."
+    ],
+    "clave_propuesta": {
+      "comunes": [
+        "run_id",
+        "test_name",
+        "seed",
+        "interfaz",
+        "canal",
+        "sentido",
+        "transaction_id",
+        "ocurrencia",
+        "segmento_reset_flush"
+      ],
+      "opcionales": [
+        "beat_id",
+        "direccion_memoria"
+      ],
+      "nota": "No todos son obligatorios para todo protocolo. TID o datos iguales no garantizan identidad única."
+    },
+    "campos_comparables_propuestos": [
+      "datos o huella verificable",
+      "campos de control pertinentes al protocolo"
+    ],
+    "reglas_pendientes": [
+      "Fijar qué campos se conservan y qué transformaciones son válidas.",
+      "Acordar correspondencia 1:1 o 1:N, reordenamiento, reintentos y descartes esperados.",
+      "Documentar por test si la correlación es obligatoria para aceptación."
+    ],
+    "regla_ausencias": "No clasificar pérdidas ni campos distintos cuando falta observabilidad suficiente; cero pares anotados no demuestra cero transacciones."
+  },
+  "pregunta_rca_correlacion": "¿Qué transacciones publicadas por el monitor llegaron al scoreboard, cuáles faltan o difieren y qué evidencia permite comprobarlo?",
+  "historial_adecuacion": {
+    "version": "1.2",
+    "fecha": "2026-10-30",
+    "motivo": "Ruta técnica vigente y prioridad de fuentes; aprobación del estudiante en esta conversación.",
+    "cambios": [
+      "Observabilidad y aceptación separadas del resultado funcional.",
+      "UVM_TESTNAME/RNTST con procedencia.",
+      "Warnings como pistas; selección parcial conservada."
+    ]
+  }
+}

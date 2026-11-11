@@ -1,0 +1,20 @@
+{
+  "consulta": "2026-10-22",
+  "nota": "Muestras extraídas de páginas HTML de resultados públicos; no ejecutadas localmente. Conservar originales y no interpretar éxito de sv-tests como prueba de corrección de un diseño industrial.",
+  "archivos": [
+    {
+      "archivo": "muestras/uvm_scoreboard_monitor_agent_env.log",
+      "original": "originales/uvm_scoreboard_monitor_agent_env.log.html",
+      "fuente": "https://github.com/chipsalliance/sv-tests-results/blob/gh-pages/logs/Verilator/testbenches/uvm_scoreboard_monitor_agent_env.sv.log.html",
+      "git_blob_sha": "905c5df49c100ed2fc867928e281e1644322c095",
+      "metodo": "Extraer cada bloque pre de section.log, quitar etiquetas internas, decodificar entidades HTML y conservar orden de líneas. Incluye compilación y simulación."
+    },
+    {
+      "archivo": "muestras/uvm_test_run_test.log",
+      "original": "originales/uvm_test_run_test.log.html",
+      "fuente": "https://github.com/chipsalliance/sv-tests-results/blob/gh-pages/logs/Verilator/testbenches/uvm_test_run_test.sv.log.html",
+      "git_blob_sha": "0873c19041faab9b8e0d1fe7aabb095d6f8e7475",
+      "metodo": "Extraer cada bloque pre de section.log, quitar etiquetas internas, decodificar entidades HTML y conservar orden de líneas. Incluye compilación y simulación."
+    }
+  ]
+}

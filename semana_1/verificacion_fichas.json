@@ -1,0 +1,47 @@
+{
+  "fecha": "2026-10-30",
+  "version": "1.2",
+  "alcance": "Integridad documental; no certifica exhaustividad, causalidad ni revisión humana independiente.",
+  "resultados": [
+    {
+      "archivo": "C01_simple_test.json",
+      "eventos": 4,
+      "funcional": "PASS",
+      "correlacion": "NOT_OBSERVABLE",
+      "aceptacion_si_obligatoria": "INDETERMINADO",
+      "hash_fragmentos_identificadores_metadatos": "verificados"
+    },
+    {
+      "archivo": "C02_scoreboard.json",
+      "eventos": 4,
+      "funcional": "INDETERMINADO",
+      "correlacion": "NOT_OBSERVABLE",
+      "aceptacion_si_obligatoria": "INDETERMINADO",
+      "hash_fragmentos_identificadores_metadatos": "verificados"
+    },
+    {
+      "archivo": "C03_axi4_fail.json",
+      "eventos": 7,
+      "funcional": "FAIL",
+      "correlacion": "NOT_OBSERVABLE",
+      "aceptacion_si_obligatoria": "FAIL",
+      "hash_fragmentos_identificadores_metadatos": "verificados"
+    },
+    {
+      "archivo": "C04_axi4_pass.json",
+      "eventos": 3,
+      "funcional": "PASS",
+      "correlacion": "NOT_OBSERVABLE",
+      "aceptacion_si_obligatoria": "INDETERMINADO",
+      "hash_fragmentos_identificadores_metadatos": "verificados"
+    },
+    {
+      "archivo": "C05_riscv.json",
+      "eventos": 6,
+      "funcional": "INDETERMINADO",
+      "correlacion": "NOT_OBSERVABLE",
+      "aceptacion_si_obligatoria": "INDETERMINADO",
+      "hash_fragmentos_identificadores_metadatos": "verificados"
+    }
+  ]
+}

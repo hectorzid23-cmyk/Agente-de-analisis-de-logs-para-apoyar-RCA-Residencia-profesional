@@ -1,0 +1,355 @@
+{
+  "annotation_version": "1.2",
+  "case_id": "C04",
+  "run_id_manual": "R04",
+  "titulo": "Corrida AXI4 exitosa asociable",
+  "fecha": "2026-10-30",
+  "politicas": [
+    "LOCAL-PF-1.1",
+    "LOCAL-REF-1.1"
+  ],
+  "revision": {
+    "autor": "Asistente, a solicitud del estudiante",
+    "estado": "propuesto",
+    "revisor_independiente": null,
+    "fecha_revision": null
+  },
+  "fuente": {
+    "log_file": "../fuentes/burst_read_test_seed1_questa.log",
+    "base_ruta": "directorio_de_esta_ficha",
+    "sha256_local": "72c7d449a9326aa5fcab44a3bcb81505680487894a5f174efb58f1f44c597fc3",
+    "cantidad_lineas": 196,
+    "url": "https://github.com/Tharunreddym/axi4-verification/blob/main/logs/burst_read_test_seed1_questa.log",
+    "git_blob_sha": "0a43a32b68a4b10f3f08b3c02c48f962d750471b",
+    "objeto_git_corresponde_a": "contenido del log publicado",
+    "metodo": "Contenido UTF-8 del conector GitHub; copia local sin líneas vacías finales; hashes en hashes_locales.json. No ejecutado localmente.",
+    "simulacion_ejecutada_localmente": false
+  },
+  "metadatos": {
+    "test": {
+      "valor": "burst_read_test",
+      "lineas_log": [
+        1,
+        4,
+        60,
+        114
+      ],
+      "estado": "observado"
+    },
+    "seed": {
+      "valor": 1,
+      "lineas_log": [
+        1
+      ],
+      "estado": "observado"
+    },
+    "simulador": {
+      "valor": "QuestaSim 2025.2",
+      "lineas_log": [
+        2
+      ]
+    },
+    "uvm": {
+      "valor": "UVM 1.2",
+      "lineas_log": [
+        1
+      ]
+    },
+    "revision_rtl_testbench": null,
+    "identificacion_test": {
+      "uvm_testname_comando": [
+        {
+          "valor": "burst_read_test",
+          "linea_log": 1,
+          "texto_original": "[2026-05-19 08:41:12 UTC] qrun -batch -access=rw+/. -uvmhome uvm-1.2 '-timescale' '1ns/1ps' -mfcu design.sv testbench.sv '-voptargs=+acc=npr' '-sv_seed' '1' '+UVM_TESTNAME=burst_read_test' '+UVM_VERBOSITY=UVM_LOW'  -do  \" run 100 us; exit\"  "
+        },
+        {
+          "valor": "burst_read_test",
+          "linea_log": 4,
+          "texto_original": "qrun -batch -access=rw+/. -uvmhome uvm-1.2 -timescale 1ns/1ps -mfcu design.sv testbench.sv -voptargs=\"+acc=npr\" -sv_seed 1 \"+UVM_TESTNAME=burst_read_test\" \"+UVM_VERBOSITY=UVM_LOW\" -do \" run 100 us; exit\" "
+        },
+        {
+          "valor": "burst_read_test",
+          "linea_log": 60,
+          "texto_original": "# vsim -batch -sv_seed 1 \"+UVM_TESTNAME=burst_read_test\" \"+UVM_VERBOSITY=UVM_LOW\" -lib qrun.out/work -do \" run 100 us; exit\" -statslog qrun.out/stats_log qrun_opt -appendlog -l qrun.log "
+        }
+      ],
+      "rntst": [
+        {
+          "valor": "burst_read_test",
+          "linea_log": 114,
+          "texto_original": "# UVM_INFO @ 0: reporter [RNTST] Running test burst_read_test..."
+        }
+      ],
+      "test_name": "burst_read_test",
+      "estado": "concordante",
+      "es_criterio_fail": false,
+      "regla": "Conservar ambos orígenes; si difieren no elegir uno silenciosamente. UVM_TESTNAME no es severidad."
+    }
+  },
+  "pregunta_del_caso": "¿Qué respalda el PASS de esta corrida y qué limita su asociación con C03?",
+  "resultado": {
+    "local": "PASS",
+    "declarado": {
+      "valor": "TEST PASSED",
+      "lineas_log": [
+        166,
+        167
+      ]
+    },
+    "estado_ejecucion": "COMPLETA",
+    "criterio": "30 beats coincidentes, cero incorrectos, TEST PASSED, resumen 0 ERROR/FATAL y cierre.",
+    "evidencia_lineas": [
+      162,
+      163,
+      165,
+      166,
+      167,
+      174,
+      175
+    ],
+    "cierre_lineas": [
+      185,
+      196
+    ],
+    "causa_raiz": {
+      "estado": "no_determinada",
+      "valor": null
+    },
+    "funcional": "PASS",
+    "alcance_local": "Resultado funcional según la evidencia del test; no acredita correlación de transporte.",
+    "aceptacion_con_correlacion_obligatoria": "INDETERMINADO",
+    "razon_aceptacion": "Si se exige correlación para aceptar el test, NOT_OBSERVABLE impide declarar PASS de aceptación.",
+    "dato_faltante_para_resolver": "Mensajes correlacionables de ambos extremos y política de aceptación por test."
+  },
+  "cobertura_anotacion": {
+    "modo": "seleccion_de_eventos",
+    "inventario_exhaustivo": false,
+    "categorias_completas_certificadas": [],
+    "habilitada_para_validar_totales": false,
+    "alcance_actual": "Eventos seleccionados, sus referencias y relaciones candidatas; los resúmenes se conservan aparte.",
+    "pendiente_para_totales": "Elegir categoría y etapa, revisar todo el intervalo de la corrida, completar sus eventos o confirmar ausencia, contrastar resumen y obtener revisión independiente."
+  },
+  "eventos": [
+    {
+      "event_id": "E01",
+      "etapa": "simulacion",
+      "tipo": "resumen_scoreboard",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "axi4_scoreboard",
+      "log_line_start": 156,
+      "log_line_end": 164,
+      "texto_original": "# UVM_INFO testbench.sv(1374) @ 1035000: uvm_test_top.env.scoreboard [axi4_scoreboard] \n# ========================================\n#       AXI4 SCOREBOARD SUMMARY\n# ========================================\n#   Write transactions : 2\n#   Read  transactions : 5\n#   Matching beats     : 30\n#   Mismatched beats   : 0\n# ========================================",
+      "tiempo": {
+        "valor_literal": "1035000",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "uvm_test_top.env.scoreboard",
+      "source_file": "testbench.sv",
+      "source_line": 1374,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [],
+      "campos_observados": {
+        "matching_beats": 30,
+        "mismatched_beats": 0,
+        "write_transactions": 2,
+        "read_transactions": 5
+      },
+      "hecho": "El scoreboard declara 30 beats coincidentes y 0 incorrectos.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    },
+    {
+      "event_id": "E02",
+      "etapa": "simulacion",
+      "tipo": "comprobacion_exitosa",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "axi4_scoreboard",
+      "log_line_start": 165,
+      "log_line_end": 165,
+      "texto_original": "# UVM_INFO testbench.sv(1388) @ 1035000: uvm_test_top.env.scoreboard [axi4_scoreboard] PASS ? All read data matched shadow memory.",
+      "tiempo": {
+        "valor_literal": "1035000",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "uvm_test_top.env.scoreboard",
+      "source_file": "testbench.sv",
+      "source_line": 1388,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [],
+      "campos_observados": {},
+      "hecho": "Se informa conformidad con shadow memory.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    },
+    {
+      "event_id": "E03",
+      "etapa": "simulacion",
+      "tipo": "resultado_test",
+      "severidad_original": "UVM_INFO",
+      "dominio_severidad": "UVM",
+      "message_id": "burst_read_test",
+      "log_line_start": 166,
+      "log_line_end": 167,
+      "texto_original": "# UVM_INFO testbench.sv(2028) @ 1035000: uvm_test_top [burst_read_test] \n# *** TEST PASSED ***",
+      "tiempo": {
+        "valor_literal": "1035000",
+        "unidad": null,
+        "origen": "explicito_log",
+        "nota": "La unidad del encabezado no se ha resuelto; no convertir numéricamente."
+      },
+      "component_path": "uvm_test_top",
+      "source_file": "testbench.sv",
+      "source_line": 2028,
+      "origen_source": "explicito_log",
+      "signal_path": null,
+      "estado_signal_path": "no_observado",
+      "otras_referencias": [],
+      "campos_observados": {},
+      "hecho": "Se declara TEST PASSED.",
+      "interpretacion": null,
+      "es_mensaje_individual": true
+    }
+  ],
+  "agregados": [
+    {
+      "aggregate_id": "A01",
+      "tipo": "UVM_REPORT_SUMMARY",
+      "log_line_start": 169,
+      "log_line_end": 183,
+      "texto_original": "# --- UVM Report Summary ---\n# \n# ** Report counts by severity\n# UVM_INFO :    9\n# UVM_WARNING :    0\n# UVM_ERROR :    0\n# UVM_FATAL :    0\n# ** Report counts by id\n# [RNTST]     1\n# [TEST_DONE]     1\n# [UVM/RELNOTES]     1\n# [UVMTOP]     1\n# [axi4_coverage]     1\n# [axi4_scoreboard]     2\n# [burst_read_test]     2",
+      "conteos_declarados": {
+        "UVM_INFO": 9,
+        "UVM_WARNING": 0,
+        "UVM_ERROR": 0,
+        "UVM_FATAL": 0
+      },
+      "es_evento_individual": false,
+      "regla": "No sumar estas filas a los mensajes individuales; INFO puede excluir el anuncio del propio resumen."
+    }
+  ],
+  "relaciones": [
+    {
+      "relation_id": "G01",
+      "miembros": [
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "tipo": "resumen_y_resultado",
+      "calificacion": "candidata",
+      "evidencia": "L156–167: estadísticas y mensajes de éxito al mismo tiempo literal.",
+      "limite": "PASS de esa prueba; no certifica cobertura total del diseño.",
+      "causalidad_demostrada": false,
+      "alternativas": [
+        "Coincidencia de contexto sin causa común demostrada."
+      ]
+    }
+  ],
+  "vinculos_entre_casos": [
+    {
+      "incident_id_candidato": "I01",
+      "otro_case_id": "C03",
+      "tipo": "mismo_test_seed",
+      "estado": "candidato",
+      "evidencia_local_lineas": [
+        1,
+        162,
+        163,
+        167
+      ],
+      "evidencia_otro_caso_lineas": [
+        1,
+        166,
+        167,
+        171
+      ],
+      "observacion": "burst_read_test y seed 1 en ambas corridas; cambia el resultado y el número de beats incorrectos.",
+      "limite": "Faltan revisiones y configuración completas; no se demuestra una corrección causal específica."
+    }
+  ],
+  "limitaciones": [
+    "La ficha no certifica un inventario exhaustivo de todas las categorías.",
+    "No se han observado rutas de señales RTL en los eventos seleccionados; no confundir componentes o PC con señales.",
+    "No existe revisión humana independiente registrada."
+  ],
+  "conteos_anotados": {
+    "dominio": "Sólo mensajes individuales seleccionados, incluidos resúmenes de scoreboard con encabezado UVM; excluye el agregado UVM Report Summary.",
+    "por_severidad_uvm": {
+      "UVM_INFO": 3,
+      "UVM_WARNING": 0,
+      "UVM_ERROR": 0,
+      "UVM_FATAL": 0
+    },
+    "cantidad_registros_evento": 3,
+    "no_representan_totales_de_corrida": true
+  },
+  "observabilidad_monitor_scoreboard": {
+    "estado_global": "NOT_OBSERVABLE",
+    "alcance_revision": "Eventos seleccionados y contexto de la muestra; no inventario exhaustivo de publicaciones TLM.",
+    "monitor_publicaciones_identificadas": [],
+    "scoreboard_recepciones_por_transaccion_identificadas": [],
+    "evidencia_contextual_scoreboard_event_ids": [
+      "E01",
+      "E02"
+    ],
+    "pares_confirmados": [],
+    "cantidad_pares_confirmados": null,
+    "obligatoria_para_aceptacion_del_test": "no_documentado",
+    "motivo": "No se dispone de mensajes identificados en ambos extremos para demostrar publicación y recepción de una misma transacción. Un match o resumen del scoreboard no demuestra ese transporte.",
+    "datos_faltantes": [
+      "Registro de publicación del monitor y recepción/consumo correspondiente en scoreboard.",
+      "Clave de identidad, canal, campos comparables y reglas de reset, reordenamiento, flush y reutilización de IDs.",
+      "Verbosidad y configuración completas de la corrida."
+    ],
+    "clave_propuesta": {
+      "comunes": [
+        "run_id",
+        "test_name",
+        "seed",
+        "interfaz",
+        "canal",
+        "sentido",
+        "transaction_id",
+        "ocurrencia",
+        "segmento_reset_flush"
+      ],
+      "opcionales": [
+        "beat_id",
+        "direccion_memoria"
+      ],
+      "nota": "No todos son obligatorios para todo protocolo. TID o datos iguales no garantizan identidad única."
+    },
+    "campos_comparables_propuestos": [
+      "datos o huella verificable",
+      "campos de control pertinentes al protocolo"
+    ],
+    "reglas_pendientes": [
+      "Fijar qué campos se conservan y qué transformaciones son válidas.",
+      "Acordar correspondencia 1:1 o 1:N, reordenamiento, reintentos y descartes esperados.",
+      "Documentar por test si la correlación es obligatoria para aceptación."
+    ],
+    "regla_ausencias": "No clasificar pérdidas ni campos distintos cuando falta observabilidad suficiente; cero pares anotados no demuestra cero transacciones."
+  },
+  "pregunta_rca_correlacion": "¿Qué transacciones publicadas por el monitor llegaron al scoreboard, cuáles faltan o difieren y qué evidencia permite comprobarlo?",
+  "historial_adecuacion": {
+    "version": "1.2",
+    "fecha": "2026-10-30",
+    "motivo": "Ruta técnica vigente y prioridad de fuentes; aprobación del estudiante en esta conversación.",
+    "cambios": [
+      "Observabilidad y aceptación separadas del resultado funcional.",
+      "UVM_TESTNAME/RNTST con procedencia.",
+      "Warnings como pistas; selección parcial conservada."
+    ]
+  }
+}
