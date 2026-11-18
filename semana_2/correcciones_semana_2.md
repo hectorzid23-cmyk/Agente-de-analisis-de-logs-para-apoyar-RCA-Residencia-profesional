@@ -1,0 +1,12 @@
+# Correcciones de la segunda semana
+
+El manifiesto y los registros nuevos usan la versión 1.1. Las capturas anteriores 1.0 se conservan. El estado de ingestión sigue indicando si se pudo leer el archivo; el resultado funcional acotado está en data.functional_evidence.
+
+1. Verbosidad: data.verbosity conserva declaraciones globales y overrides con línea e identificador de evidencia. Contrasta el nivel global declarado con los umbrales de referencia del escenario FPU (monitor HIGH = 300; scoreboard LOW = 100). Con overrides o valores contradictorios no presupone nivel efectivo; los overrides pueden afectar sólo a una fase, tiempo, componente o ID. Un umbral insuficiente o desconocido genera una recomendación para la siguiente corrida. No cambia un log existente, no ejecuta el simulador y no prueba ni descarta pérdidas de transporte.
+2. Finish: data.finish registra apariciones y líneas de cierre explícito. La evaluación acotada exige evidencia positiva de éxito seguida de Finish, sin fallos reconocidos ni captura incompleta o contradictoria. Un fallo concluyente reconocido prevalece aun con Finish. Finish solo o falta de Finish deja INDETERMINADO si no hay fallo reconocido. No es un parser universal de resultados ni valida el transporte monitor → scoreboard.
+3. RNTST: se prioriza el nombre anunciado por UVM_INFO [RNTST]; UVM_TESTNAME queda de respaldo. Si difieren, se conserva la evidencia de ambos y se advierte; varios nombres RNTST distintos dejan el nombre sin resolver. El argumento de xsim sin prefijo + también se reconoce.
+4. Regex: los patrones de la ingesta se centralizaron en patrones_ingestion.py. Los scripts históricos de preparación de datos y las búsquedas literales de la demo no forman parte del lector.
+5. Multilínea: los registros físicos .jsonl se mantienen íntegros. El archivo adicional .multiline.jsonl guarda bloques candidatos de UVM_INFO y Display con encabezados DISPLAY: o [DISPLAY], y continuaciones indentadas. Guarda sus intervalos inclusivos y texto literal. Un Display sin etiqueta o una continuación sin señal de formato no se puede delimitar con seguridad: el texto sigue disponible en los registros físicos.
+
+Pruebas: desde la raíz, ejecutar python -B -m unittest semana_2.test_ingestion -v. Los casos originales siguen verificando codificación, bytes y trazabilidad; la prueba nueva cubre las cinco correcciones y la diferencia entre Finish y PASS.
+

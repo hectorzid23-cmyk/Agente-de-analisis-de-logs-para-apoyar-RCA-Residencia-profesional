@@ -71,12 +71,61 @@ class IngestionTests(unittest.TestCase):
             self.assertEqual(row["texto_original"] + row["terminador"], original)
             self.assertEqual(row["event_id"], f'{out["run_id"]}:{p["file_id"]}:{number}')
         for observation in out["data"]["test_name_observations"]:
-            self.assertIn("+UVM_TESTNAME=", expected[observation["line"]-1])
+            self.assertIn("UVM_TESTNAME=" if observation["source"] == "UVM_TESTNAME" else "[RNTST]", expected[observation["line"]-1])
             self.assertEqual(observation["event_id"], records[observation["line"]-1]["event_id"])
         for evidence in case.get("evidencia", []):
             for mention in evidence["apariciones"]:
                 self.assertEqual(records[mention["linea"]-1]["texto_original"], mention["texto"])
         return expected
+
+    def test_invalid_utf8_marks_offsets_and_keeps_clean_evidence(self):
+        source = self.storage / "invalid.log"
+        raw = ("señal ".encode() + b"\xff\x82 TEST FAILED\r\n"
+               b"+UVM_TESTNAME=demo\rUVM_INFO [RESULT] SUCCESS\n"
+               b"\x82 datos \xff\r\n$finish")
+        source.write_bytes(raw)
+        out = ingest_log(source, allowed_root=self.storage, storage=self.storage)
+        self.response.validate(out)
+        self.assertEqual(out["status"], "partial")
+        self.assertEqual(out["test_name"], "demo")
+        self.assertEqual(out["data"]["finish"]["count"], 1)
+        self.assertEqual(out["data"]["functional_evidence"]["result"], "INDETERMINADO")
+        self.assertFalse(out["data"]["functional_evidence"]["failures"])
+        warns = [w for w in out["warnings"] if w["code"] == "decode_replacement"]
+        self.assertEqual([(w["line"], w["byte_offset"], w["byte_length"]) for w in warns],
+                         [(1, 7, 2), (4, raw.index(b"\x82 datos"), 1),
+                          (4, raw.rindex(b"\xff"), 1)])
+        run = self.storage / out["run_id"]
+        prov = out["provenance"][0]
+        self.assertEqual((run / prov["snapshot"]).read_bytes(), raw)
+        rows = [json.loads(row) for row in (run / prov["records"]).read_text(encoding="utf-8").splitlines()]
+        for row in rows:
+            self.line.validate(row)
+        self.assertEqual([row["terminador"] for row in rows], ["\r\n", "\r", "\n", "\r\n", ""])
+        self.assertEqual([row["log_line_start"] for row in rows if row.get("decoding_lossy")], [1, 4])
+        self.assertEqual(rows[0]["texto_original"], "señal � TEST FAILED")
+        source.write_bytes(raw + b"\nUVM_ERROR [CHECK] mismatch\n")
+        failed = ingest_log(source, allowed_root=self.storage, storage=self.storage)
+        self.assertEqual(failed["data"]["functional_evidence"]["result"], "FAIL")
+
+    def test_real_cvfpu_invalid_bytes(self):
+        folder = ROOT / "pruebas_archivos_reales_logs"
+        source = folder / "fpu_random_test_seed1.log.txt"
+        out = ingest_log(source, allowed_root=folder, storage=self.storage)
+        self.response.validate(out)
+        self.assertEqual(out["status"], "partial")
+        self.assertEqual(out["test_name"], "fpu_random_test")
+        self.assertEqual(out["data"]["finish"]["count"], 1)
+        self.assertEqual([w["line"] for w in out["warnings"] if w["code"] == "decode_replacement"],
+                         [28, 49, 59, 222])
+        prov = out["provenance"][0]
+        run = self.storage / out["run_id"]
+        self.assertEqual((run / prov["snapshot"]).read_bytes(), source.read_bytes())
+        rows = [json.loads(row) for row in (run / prov["records"]).read_text(encoding="utf-8").splitlines()]
+        for tag in ("FPU_MONITOR_REQ", "FPU_SB_REQ", "FPU_MONITOR_RSP", "FPU_SB_RSP"):
+            self.assertEqual(sum(row["texto_original"].startswith("UVM_INFO ") and
+                                 f"[{tag}]" in row["texto_original"] and not row.get("decoding_lossy")
+                                 for row in rows), 20)
 
     def test_43_robustez(self):
         folder = ROOT / "pruebas_robustez_logs"
@@ -157,6 +206,48 @@ class IngestionTests(unittest.TestCase):
         rows = [json.loads(s) for s in (self.storage / "salida" / out["run_id"] / p["records"]).read_text(encoding="utf-8").split("\n") if s]
         self.assertEqual([(x["texto_original"], x["terminador"]) for x in rows],
                          [("señal", "\r\n"), ("", "\r"), ("texto", "\n"), ("fin", "")])
+
+
+    def test_ajustes_semana_2(self):
+        root = self.storage / "entrada"
+        root.mkdir()
+        source = root / "caso.log"
+        log = (
+            "+UVM_TESTNAME=solicitado +UVM_VERBOSITY=UVM_LOW\n"
+            "UVM_INFO @ 0: reporter [RNTST] Running test ejecutado...\n"
+            "UVM_INFO @ 1: monitor [DETAIL] primera\n"
+            "    segunda\n"
+            "DISPLAY: cabecera\n"
+            "    cuerpo\n"
+            "UVM_INFO @ 2: reporter [TEST_RESULT] TEST PASSED\n"
+            "$finish called at time : 9 ns\n"
+        )
+        kwargs = dict(allowed_root=root, storage=self.storage / "salida")
+        source.write_text(log, encoding="utf-8")
+        a = ingest_log(source, **kwargs)
+        self.response.validate(a)
+        self.assertEqual(a["test_name"], "ejecutado")
+        self.assertIn("test_name_conflict", {w["code"] for w in a["warnings"]})
+        self.assertEqual(a["data"]["verbosity"]["roles"]["monitor"]["status"], "low")
+        self.assertEqual(a["data"]["verbosity"]["roles"]["scoreboard"]["status"], "sufficient")
+        self.assertFalse(a["data"]["verbosity"]["adjustment_applied"])
+        self.assertEqual(a["data"]["finish"]["count"], 1)
+        spans = kwargs["storage"] / a["run_id"] / a["provenance"][0]["multiline_records"]
+        groups = [json.loads(x) for x in spans.read_text(encoding="utf-8").splitlines()]
+        self.assertEqual([(x["kind"], x["log_line_start"], x["log_line_end"]) for x in groups],
+                         [("uvm_info", 3, 4), ("display", 5, 6)])
+        for content, expected in [
+            (log.replace("solicitado", "ejecutado"), "PASS"),
+            (log.replace("solicitado", "ejecutado").replace("$finish called at time : 9 ns", ""), "INDETERMINADO"),
+            ("$finish\n", "INDETERMINADO"),
+            ("UVM_FATAL @ 4: scoreboard [BAD] fallo\n$finish\n", "FAIL"),
+            ("TEST PASSED\n$finish\n# Errors: 2\n", "FAIL"),
+        ]:
+            with self.subTest(expected=expected):
+                source.write_text(content, encoding="utf-8")
+                b = ingest_log(source, **kwargs)
+                self.assertEqual(b["data"]["functional_evidence"]["result"], expected)
+
 
 
 if __name__ == "__main__":

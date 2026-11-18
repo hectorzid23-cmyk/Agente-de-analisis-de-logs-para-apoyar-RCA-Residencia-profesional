@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "status": {
       "enum": [
@@ -77,13 +77,20 @@
                   "event_id": {
                     "type": "string",
                     "pattern": "^R-[a-f0-9]{32}:F[0-9]{4,}:[1-9][0-9]*$"
+                  },
+                  "source": {
+                    "enum": [
+                      "RNTST",
+                      "UVM_TESTNAME"
+                    ]
                   }
                 },
                 "required": [
                   "value",
                   "file_id",
                   "line",
-                  "event_id"
+                  "event_id",
+                  "source"
                 ],
                 "additionalProperties": false
               }
@@ -93,13 +100,25 @@
                 "uvm",
                 "unknown"
               ]
+            },
+            "verbosity": {
+              "type": "object"
+            },
+            "finish": {
+              "type": "object"
+            },
+            "functional_evidence": {
+              "type": "object"
             }
           },
           "required": [
             "files_processed",
             "lines",
             "test_name_observations",
-            "format_hint"
+            "format_hint",
+            "verbosity",
+            "finish",
+            "functional_evidence"
           ],
           "additionalProperties": false
         },
@@ -127,8 +146,39 @@
           "file_id": {
             "type": "string",
             "pattern": "^F[0-9]{4,}$"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "byte_offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "byte_length": {
+            "type": "integer",
+            "minimum": 1
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "code": {
+                  "const": "decode_replacement"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "file_id",
+                "line",
+                "byte_offset",
+                "byte_length"
+              ]
+            }
+          }
+        ]
       }
     },
     "provenance": {
@@ -189,6 +239,12 @@
           },
           "known_truncated": {
             "type": "boolean"
+          },
+          "multiline_records": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [
@@ -201,7 +257,8 @@
           "encoding",
           "line_count",
           "final_newline",
-          "known_truncated"
+          "known_truncated",
+          "multiline_records"
         ],
         "additionalProperties": false
       }

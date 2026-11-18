@@ -4,7 +4,9 @@
 
 `ingest_log(paths, *, allowed_root, storage, metadata=None)` recibe una ruta o una lista de rutas locales en orden. Las rutas relativas se resuelven desde `allowed_root`. Se rechazan rutas inexistentes, duplicadas, directorios y rutas cuyo destino resuelto queda fuera de la raíz. La raíz y el almacenamiento los configura el programa llamador, no el contenido del log; usar directorios locales de confianza y no modificar los archivos durante la captura.
 
-`metadata` admite `encoding` (opcional, aplicado a todos los archivos de la llamada) y `known_truncated` (booleano, falso por defecto). Para entradas con distintas codificaciones explícitas, usar llamadas separadas. La lectura detecta BOM UTF-8 y UTF-16 LE/BE; sin BOM ni indicación usa UTF-8 estricto. Para Windows-1252 o UTF-16 sin BOM, indicar la codificación. Un BOM incompatible, bytes inválidos o NUL en el texto producen `decode_error`: se conserva la copia binaria y se descarta el índice incompleto del archivo; los otros archivos pueden procesarse. No se reemplazan caracteres ni se adivina una codificación alternativa.
+`metadata` admite `encoding` (opcional, aplicado a todos los archivos de la llamada) y `known_truncated` (booleano, falso por defecto). Para entradas con distintas codificaciones explícitas, usar llamadas separadas. La lectura detecta BOM UTF-8 y UTF-16 LE/BE. Con BOM o codificación indicada, la decodificación es estricta. Un BOM incompatible, bytes inválidos en modo estricto o NUL producen decode_error: se conserva la copia binaria y se descarta el índice incompleto de ese archivo. Para Windows-1252 o UTF-16 sin BOM, indicar la codificación.
+
+Sin BOM ni codificación indicada se interpreta UTF-8. Cada secuencia contigua de bytes inválidos se representa como � en el índice; no se modifica la copia binaria ni se adivina otra codificación. La advertencia decode_replacement indica archivo, línea (desde 1), byte_offset (desde 0 en la copia original) y byte_length. Cada línea afectada se marca decoding_lossy: true; su texto_original es una representación con sustitución. Se conserva para consulta, se excluye de la extracción automática de evidencia y corta cualquier bloque multilínea. La ingesta queda partial; no se declara PASS con evidencia incompleta, pero se conserva un fallo inequívoco en una línea intacta.
 
 La respuesta cumple [ingestion.schema.json](esquemas/ingestion.schema.json). Cada fila JSONL cumple [linea.schema.json](esquemas/linea.schema.json). Campos principales:
 
@@ -43,7 +45,7 @@ No requiere una interfaz de comandos propia. Los conjuntos de entrada y sus `man
 
 ## Capturar y verificar una referencia
 
-Cada directorio `<storage>/<run_id>/` contiene `manifest.json`, copias binarias `F0001.log` y, cuando la decodificación es válida, registros `F0001.jsonl` (un objeto JSON UTF-8 por línea física). Se prepara en un directorio temporal y se publica al terminar. El programa no sobrescribe corridas publicadas; el hash permite detectar modificaciones externas, no impide editarlas manualmente.
+Cada directorio `<storage>/<run_id>/` contiene `manifest.json`, copias binarias `F0001.log` y, cuando se puede decodificar o recuperar el texto, registros `F0001.jsonl` (un objeto JSON UTF-8 por línea física). Se prepara en un directorio temporal y se publica al terminar. El programa no sobrescribe corridas publicadas; el hash permite detectar modificaciones externas, no impide editarlas manualmente.
 
 Las líneas se numeran desde 1, cuentan líneas vacías y conservan espacios, prefijos y terminador separado (LF, CRLF, CR o ninguno). El BOM es metadato de codificación y no parte del mensaje. La copia original permite verificar los bytes completos. Para rastrear una referencia, buscar `file_id` en el manifiesto, comprobar SHA-256 de la copia y leer el intervalo inclusivo señalado. Los ejemplos generados se encuentran en `ejemplos/`.
 
