@@ -1,0 +1,265 @@
+#-----------------------------------------------------------
+# xsim v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Thu Nov  5 01:34:58 2026
+# Process ID         : 148424
+# Current directory  : C:/master/Seguimiento_Practicas/HZB/sim/build
+# Command line       : xsim.exe -log run.log -mode tcl -source {xsim.dir/top_snap/xsim_script.tcl}
+# Log file           : C:/master/Seguimiento_Practicas/HZB/sim/build/run.log
+# Journal file       : C:/master/Seguimiento_Practicas/HZB/sim/build\xsim.jou
+# Running On         : RSYO
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+# CPU Frequency      : 2592 MHz
+# CPU Physical cores : 6
+# CPU Logical cores  : 12
+# Host memory        : 34203 MB
+# Swap memory        : 57590 MB
+# Total Virtual      : 91794 MB
+# Available Virtual  : 33365 MB
+#-----------------------------------------------------------
+source xsim.dir/top_snap/xsim_script.tcl
+# xsim {top_snap} -testplusarg UVM_TESTNAME=fpu_random_test -testplusarg UVM_VERBOSITY=UVM_HIGH -testplusarg NB_TXNS=20 -testplusarg TIMEOUT=30000000 -testplusarg NO_OTF -autoloadwcfg -runall -sv_seed 1
+Time resolution is 1 ps
+run -all
+UVM_INFO C:XilinxVivadÿ‚4.2data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18601) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/overlay/tb_top.sv(98) @ 0: reporter [NO_OTF] factory override installed: fpu_top_cfg -> fpu_top_cfg_no_otf
+UVM_INFO C:XilinxVivadÿ‚4.2data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18648) @ 0: reporter [NO_DPI_TSTNAME] UVM_NO_DPI defined--getting UVM_TESTNAME directly, without DPI
+UVM_INFO @ 0: reporter [RNTST] Running test fpu_random_test...
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/tests/base_test.svh(85) @ 0: uvm_test_top [uvm_test_top] Build phase complete
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/env/fpu_top_cfg.svh(45) @ 0: reporter [fpu_top_cfg] NUM_TXN=20
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_agent/fpu_agent.svh(76) @ 0: uvm_test_top.env.fpu_agent [uvm_test_top.env.fpu_agent] Build stage complete.
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/env/fpu_sb.svh(85) @ 0: uvm_test_top.env.fpu_sb [SCOREBOARD] Build stage complete.
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_agent/fpu_agent.svh(92) @ 0: uvm_test_top.env.fpu_agent [uvm_test_top.env.fpu_agent] Connect stage complete.
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/reset_gen/reset_driver_c.svh(149) @ 0: uvm_test_top.env.reset_driver [RESET CONNECT] Reset driver now connected
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/tests/base_test.svh(94) @ 0: uvm_test_top [uvm_test_top] Entering end of elaboration
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/overlay/fpu_test_pkg.sv(57) @ 0: reporter [NO_OTF] reset_on_the_fly=0 flush_on_the_fly=0
+UVM_INFO C:XilinxVivadÿ‚4.2data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(20867) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/clock_gen/clock_driver_c.svh(89) @ 0: uvm_test_top.env.clock_driver [CLOCK_DRIVER_C] START clock period = 1000.000000(f) ps, clock duty = 50(d), low_clock = 500000000.000000(f) ps, high_clock = 500000000.000000(f) ps
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/watchdog/watchdog_c.svh(89) @ 0: uvm_test_top.env.watchdog [WD START] Global Watchog Timer set to 30000000 ns
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/reset_gen/reset_driver_c.svh(157) @ 0: uvm_test_top.env.reset_driver [RESET START] RESET START (1 active)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/env/fpu_sb.svh(109) @ 0: uvm_test_top.env.fpu_sb [SCOREBOARD] Reset stage complete.
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_agent/fpu_agent.svh(101) @ 0: uvm_test_top.env.fpu_agent [STOPPED SEQUENCES] STOPPED SEQUENCES
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_agent/fpu_driver.svh(75) @ 0: uvm_test_top.env.fpu_agent.driver [driver] Reset stage complete.
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/reset_gen/reset_driver_c.svh(169) @ 50000: uvm_test_top.env.reset_driver [RESET DONE] RESET DONE (0 active)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/env/fpu_sb.svh(117) @ 50000: uvm_test_top.env.fpu_sb [SCOREBOARD] Post Reset stage complete.
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/tests/base_test.svh(145) @ 50000: uvm_test_top [uvm_test_top] Inside main thread
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/tests/base_test.svh(156) @ 50000: uvm_test_top [uvm_test_top] Inside flush thread
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/tests/base_test.svh(169) @ 50000: uvm_test_top [uvm_test_top] Inside reset thread
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_agent/fpu_monitor.svh(123) @ 50000: uvm_test_top.env.fpu_agent.monitor [FPU MONITOR] Entering Main Phase
+UVM_WARNING @ 50000: uvm_test_top.env.fpu_agent.sequencer@@seq [uvm_sequence_base] Body definition undefined
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/pulse_gen/pulse_gen_driver.svh(129) @ 52000: uvm_test_top.env.flush_driver [PULSE GEN DRIVER] Estimated clock period 1000(d) ps
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 75000: reporter [FPU_MONITOR_REQ] OP=FMUL, OP_A=ffffffff80ca3eaf(x), OP_B=ffffffffc2800080(x), IMM=ffffffff00dcc195(x), TID=2(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 75000: reporter [FPU_SB_REQ] OP=FMUL, OP_A=ffffffff80ca3eaf(x), OP_B=ffffffffc2800080(x), IMM=ffffffff00dcc195(x), TID=2(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 77000: reporter [FPU_MONITOR_RSP] TID=2(x), RESULT=ffffffff03ca3f79(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 77000: reporter [FPU_SB_RSP] TID=2(x), RESULT=ffffffff03ca3f79(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 77000: reporter [FPU_REF_MODEL_REQ] OP=FMUL, OP_A=ffffffff80ca3eaf(x), OP_B=ffffffffc2800080(x), IMM=ffffffff00dcc195(x), TID=2(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 77000: reporter [FPU_REF_MODEL] TXN INFO: OP=n, OP1=ffffffff80ca3eaf (h), OP2=ffffffffc2800080 (h), OP3=ffffffff00dcc195 (h), RND=2 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 77000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffff03ca3f79(x), FLAGS= 1
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 78000: reporter [FPU_MONITOR_REQ] OP=FSGNJ, OP_A=ffffffff80000000(x), OP_B=ffffffff00ffffff(x), IMM=ffffffff80000000(x), TID=4(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 78000: reporter [FPU_SB_REQ] OP=FSGNJ, OP_A=ffffffff80000000(x), OP_B=ffffffff00ffffff(x), IMM=ffffffff80000000(x), TID=4(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 79000: reporter [FPU_MONITOR_RSP] TID=4(x), RESULT=ffffffff80000000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 79000: reporter [FPU_MONITOR_REQ] OP=FMIN_MAX, OP_A=0(x), OP_B=8010000800000000(x), IMM=801ffffffffffff7(x), TID=2(x), FMT=1(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 79000: reporter [FPU_SB_RSP] TID=4(x), RESULT=ffffffff80000000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 79000: reporter [FPU_REF_MODEL_REQ] OP=FSGNJ, OP_A=ffffffff80000000(x), OP_B=ffffffff00ffffff(x), IMM=ffffffff80000000(x), TID=4(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 79000: reporter [FPU_REF_MODEL] TXN INFO: OP=y, OP1=ffffffff80000000 (h), OP2=ffffffff00ffffff (h), OP3=ffffffff80000000 (h), RND=2 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 79000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffff80000000(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 79000: reporter [FPU_SB_REQ] OP=FMIN_MAX, OP_A=0(x), OP_B=8010000800000000(x), IMM=801ffffffffffff7(x), TID=2(x), FMT=1(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 80000: reporter [FPU_MONITOR_REQ] OP=FMV_F2X, OP_A=ffffffff80000000(x), OP_B=ffffffff80ffffff(x), IMM=ffffffff80821e75(x), TID=0(x), FMT=0(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 80000: reporter [FPU_MONITOR_RSP] TID=2(x), RESULT=8010000800000000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 80000: reporter [FPU_SB_REQ] OP=FMV_F2X, OP_A=ffffffff80000000(x), OP_B=ffffffff80ffffff(x), IMM=ffffffff80821e75(x), TID=0(x), FMT=0(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 80000: reporter [FPU_SB_RSP] TID=2(x), RESULT=8010000800000000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 80000: reporter [FPU_REF_MODEL_REQ] OP=FMIN_MAX, OP_A=0(x), OP_B=8010000800000000(x), IMM=801ffffffffffff7(x), TID=2(x), FMT=1(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 80000: reporter [FPU_REF_MODEL] TXN INFO: OP=p, OP1=0 (h), OP2=8010000800000000 (h), OP3=801ffffffffffff7 (h), RND=0 (h), BIS=63 (d), ES=10 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 80000: reporter [FPU_REF_MODEL_RSP] RESULT=8010000800000000(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 81000: reporter [FPU_MONITOR_RSP] TID=0(x), RESULT=ffffffff80000000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 81000: reporter [FPU_SB_RSP] TID=0(x), RESULT=ffffffff80000000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 81000: reporter [FPU_REF_MODEL_REQ] OP=FMV_F2X, OP_A=ffffffff80000000(x), OP_B=ffffffff80ffffff(x), IMM=ffffffff80821e75(x), TID=0(x), FMT=0(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 81000: reporter [FPU_REF_MODEL] TXN INFO: OP=z, OP1=ffffffff80000000 (h), OP2=ffffffff80ffffff (h), OP3=ffffffff80821e75 (h), RND=3 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 81000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffff80000000(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 92000: reporter [FPU_MONITOR_REQ] OP=FCVT_I2F, OP_A=7fffffffffffffff(x), OP_B=c73f1577ae9b540a(x), IMM=1(x), TID=7(x), FMT=1(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 92000: reporter [FPU_SB_REQ] OP=FCVT_I2F, OP_A=7fffffffffffffff(x), OP_B=c73f1577ae9b540a(x), IMM=1(x), TID=7(x), FMT=1(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 94000: reporter [FPU_MONITOR_RSP] TID=7(x), RESULT=41efffffffe00000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 94000: reporter [FPU_SB_RSP] TID=7(x), RESULT=41efffffffe00000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 94000: reporter [FPU_REF_MODEL_REQ] OP=FCVT_I2F, OP_A=7fffffffffffffff(x), OP_B=c73f1577ae9b540a(x), IMM=1(x), TID=7(x), FMT=1(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 94000: reporter [FPU_REF_MODEL] TXN INFO: OP=w, OP1=7fffffffffffffff (h), OP2=c73f1577ae9b540a (h), OP3=1 (h), RND=0 (h), BIS=63 (d), ES=10 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 94000: reporter [FPU_REF_MODEL_RSP] RESULT=41efffffffe00000(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 113000: reporter [FPU_MONITOR_REQ] OP=FMSUB, OP_A=ffffffffffff8004(x), OP_B=ffffffffffff8000(x), IMM=ffffffffffff0500(x), TID=3(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 113000: reporter [FPU_SB_REQ] OP=FMSUB, OP_A=ffffffffffff8004(x), OP_B=ffffffffffff8000(x), IMM=ffffffffffff0500(x), TID=3(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 114000: reporter [FPU_MONITOR_REQ] OP=FMADD, OP_A=ffffffffffff0040(x), OP_B=ffffffffffff0200(x), IMM=ffffffffffff37fd(x), TID=2(x), FMT=2(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 114000: reporter [FPU_MONITOR_RSP] TID=3(x), RESULT=ffffffffffff8500(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 114000: reporter [FPU_SB_REQ] OP=FMADD, OP_A=ffffffffffff0040(x), OP_B=ffffffffffff0200(x), IMM=ffffffffffff37fd(x), TID=2(x), FMT=2(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 114000: reporter [FPU_SB_RSP] TID=3(x), RESULT=ffffffffffff8500(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 114000: reporter [FPU_REF_MODEL_REQ] OP=FMSUB, OP_A=ffffffffffff8004(x), OP_B=ffffffffffff8000(x), IMM=ffffffffffff0500(x), TID=3(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 114000: reporter [FPU_REF_MODEL] TXN INFO: OP=s, OP1=ffffffffffff8004 (h), OP2=ffffffffffff8000 (h), OP3=ffffffffffff0500 (h), RND=2 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 114000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffffffff8500(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 115000: reporter [FPU_MONITOR_RSP] TID=2(x), RESULT=ffffffffffff37fe(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 115000: reporter [FPU_MONITOR_REQ] OP=FMSUB, OP_A=ffffffffffff8040(x), OP_B=ffffffffffff03fb(x), IMM=ffffffffffff8000(x), TID=7(x), FMT=2(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 115000: reporter [FPU_SB_RSP] TID=2(x), RESULT=ffffffffffff37fe(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 115000: reporter [FPU_REF_MODEL_REQ] OP=FMADD, OP_A=ffffffffffff0040(x), OP_B=ffffffffffff0200(x), IMM=ffffffffffff37fd(x), TID=2(x), FMT=2(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 115000: reporter [FPU_REF_MODEL] TXN INFO: OP=r, OP1=ffffffffffff0040 (h), OP2=ffffffffffff0200 (h), OP3=ffffffffffff37fd (h), RND=3 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 115000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffffffff37fe(x), FLAGS= 1
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 115000: reporter [FPU_SB_REQ] OP=FMSUB, OP_A=ffffffffffff8040(x), OP_B=ffffffffffff03fb(x), IMM=ffffffffffff8000(x), TID=7(x), FMT=2(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 116000: reporter [FPU_MONITOR_REQ] OP=FCLASS, OP_A=ffffffffec3fffff(x), OP_B=ffffffff80fbffff(x), IMM=ffffffff80004000(x), TID=0(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 116000: reporter [FPU_MONITOR_RSP] TID=7(x), RESULT=ffffffffffff8000(x), EXCEPTION=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 116000: reporter [FPU_SB_REQ] OP=FCLASS, OP_A=ffffffffec3fffff(x), OP_B=ffffffff80fbffff(x), IMM=ffffffff80004000(x), TID=0(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 116000: reporter [FPU_SB_RSP] TID=7(x), RESULT=ffffffffffff8000(x), EXCEPTION=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 116000: reporter [FPU_REF_MODEL_REQ] OP=FMSUB, OP_A=ffffffffffff8040(x), OP_B=ffffffffffff03fb(x), IMM=ffffffffffff8000(x), TID=7(x), FMT=2(d), RM=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 116000: reporter [FPU_REF_MODEL] TXN INFO: OP=s, OP1=ffffffffffff8040 (h), OP2=ffffffffffff03fb (h), OP3=ffffffffffff8000 (h), RND=0 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 116000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffffffff8000(x), FLAGS= 3
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 117000: reporter [FPU_MONITOR_RSP] TID=0(x), RESULT=2(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 117000: reporter [FPU_SB_RSP] TID=0(x), RESULT=2(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 117000: reporter [FPU_REF_MODEL_REQ] OP=FCLASS, OP_A=ffffffffec3fffff(x), OP_B=ffffffff80fbffff(x), IMM=ffffffff80004000(x), TID=0(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 117000: reporter [FPU_REF_MODEL] TXN INFO: OP=}, OP1=ffffffffec3fffff (h), OP2=ffffffff80fbffff (h), OP3=ffffffff80004000 (h), RND=2 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 117000: reporter [FPU_REF_MODEL_RSP] RESULT=2(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 134000: reporter [FPU_MONITOR_REQ] OP=FNMSUB, OP_A=ffffffffffff8200(x), OP_B=ffffffffffff0480(x), IMM=ffffffffffff8059(x), TID=7(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 134000: reporter [FPU_SB_REQ] OP=FNMSUB, OP_A=ffffffffffff8200(x), OP_B=ffffffffffff0480(x), IMM=ffffffffffff8059(x), TID=7(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 135000: reporter [FPU_MONITOR_RSP] TID=7(x), RESULT=ffffffffffff8059(x), EXCEPTION=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 135000: reporter [FPU_MONITOR_REQ] OP=FMV_X2F, OP_A=fffffffffffff(x), OP_B=10040000000000(x), IMM=800fffffffdfffff(x), TID=5(x), FMT=1(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 135000: reporter [FPU_SB_RSP] TID=7(x), RESULT=ffffffffffff8059(x), EXCEPTION=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 135000: reporter [FPU_REF_MODEL_REQ] OP=FNMSUB, OP_A=ffffffffffff8200(x), OP_B=ffffffffffff0480(x), IMM=ffffffffffff8059(x), TID=7(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 135000: reporter [FPU_REF_MODEL] TXN INFO: OP=t, OP1=ffffffffffff8200 (h), OP2=ffffffffffff0480 (h), OP3=ffffffffffff8059 (h), RND=2 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 135000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffffffff8059(x), FLAGS= 3
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 135000: reporter [FPU_SB_REQ] OP=FMV_X2F, OP_A=fffffffffffff(x), OP_B=10040000000000(x), IMM=800fffffffdfffff(x), TID=5(x), FMT=1(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 136000: reporter [FPU_MONITOR_REQ] OP=FMUL, OP_A=ffffffffffff8000(x), OP_B=ffffffffffff0000(x), IMM=ffffffffffff8002(x), TID=1(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 136000: reporter [FPU_MONITOR_RSP] TID=5(x), RESULT=fffffffffffff(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 136000: reporter [FPU_SB_REQ] OP=FMUL, OP_A=ffffffffffff8000(x), OP_B=ffffffffffff0000(x), IMM=ffffffffffff8002(x), TID=1(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 136000: reporter [FPU_SB_RSP] TID=5(x), RESULT=fffffffffffff(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 136000: reporter [FPU_REF_MODEL_REQ] OP=FMV_X2F, OP_A=fffffffffffff(x), OP_B=10040000000000(x), IMM=800fffffffdfffff(x), TID=5(x), FMT=1(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 136000: reporter [FPU_REF_MODEL] TXN INFO: OP={, OP1=fffffffffffff (h), OP2=10040000000000 (h), OP3=800fffffffdfffff (h), RND=3 (h), BIS=63 (d), ES=10 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 136000: reporter [FPU_REF_MODEL_RSP] RESULT=fffffffffffff(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 137000: reporter [FPU_MONITOR_RSP] TID=1(x), RESULT=ffffffffffff8000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 137000: reporter [FPU_SB_RSP] TID=1(x), RESULT=ffffffffffff8000(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 137000: reporter [FPU_REF_MODEL_REQ] OP=FMUL, OP_A=ffffffffffff8000(x), OP_B=ffffffffffff0000(x), IMM=ffffffffffff8002(x), TID=1(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 137000: reporter [FPU_REF_MODEL] TXN INFO: OP=n, OP1=ffffffffffff8000 (h), OP2=ffffffffffff0000 (h), OP3=ffffffffffff8002 (h), RND=2 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 137000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffffffff8000(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 148000: reporter [FPU_MONITOR_REQ] OP=FCMP, OP_A=ffffffffffff0020(x), OP_B=ffffffffffff83fe(x), IMM=ffffffffffffbc40(x), TID=7(x), FMT=2(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 148000: reporter [FPU_SB_REQ] OP=FCMP, OP_A=ffffffffffff0020(x), OP_B=ffffffffffff83fe(x), IMM=ffffffffffffbc40(x), TID=7(x), FMT=2(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 149000: reporter [FPU_MONITOR_RSP] TID=7(x), RESULT=0(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 149000: reporter [FPU_SB_RSP] TID=7(x), RESULT=0(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 149000: reporter [FPU_REF_MODEL_REQ] OP=FCMP, OP_A=ffffffffffff0020(x), OP_B=ffffffffffff83fe(x), IMM=ffffffffffffbc40(x), TID=7(x), FMT=2(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 149000: reporter [FPU_REF_MODEL] TXN INFO: OP=|, OP1=ffffffffffff0020 (h), OP2=ffffffffffff83fe (h), OP3=ffffffffffffbc40 (h), RND=1 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 149000: reporter [FPU_REF_MODEL_RSP] RESULT=0(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 161000: reporter [FPU_MONITOR_REQ] OP=FNMADD, OP_A=8010000000000008(x), OP_B=800ffffff7ffffff(x), IMM=8000000000000000(x), TID=3(x), FMT=1(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 161000: reporter [FPU_SB_REQ] OP=FNMADD, OP_A=8010000000000008(x), OP_B=800ffffff7ffffff(x), IMM=8000000000000000(x), TID=3(x), FMT=1(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 162000: reporter [FPU_MONITOR_REQ] OP=FMV_X2F, OP_A=ffffffff80ffffff(x), OP_B=ffffffff80ffffef(x), IMM=ffffffff807ffff7(x), TID=5(x), FMT=0(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 162000: reporter [FPU_SB_REQ] OP=FMV_X2F, OP_A=ffffffff80ffffff(x), OP_B=ffffffff80ffffef(x), IMM=ffffffff807ffff7(x), TID=5(x), FMT=0(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 163000: reporter [FPU_MONITOR_RSP] TID=5(x), RESULT=ffffffff80ffffff(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 163000: reporter [FPU_SB_RSP] TID=5(x), RESULT=ffffffff80ffffff(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 163000: reporter [FPU_REF_MODEL_REQ] OP=FMV_X2F, OP_A=ffffffff80ffffff(x), OP_B=ffffffff80ffffef(x), IMM=ffffffff807ffff7(x), TID=5(x), FMT=0(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 163000: reporter [FPU_REF_MODEL] TXN INFO: OP={, OP1=ffffffff80ffffff (h), OP2=ffffffff80ffffef (h), OP3=ffffffff807ffff7 (h), RND=3 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 163000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffff80ffffff(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 164000: reporter [FPU_MONITOR_RSP] TID=3(x), RESULT=8000000000000000(x), EXCEPTION=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 164000: reporter [FPU_SB_RSP] TID=3(x), RESULT=8000000000000000(x), EXCEPTION=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 164000: reporter [FPU_REF_MODEL_REQ] OP=FNMADD, OP_A=8010000000000008(x), OP_B=800ffffff7ffffff(x), IMM=8000000000000000(x), TID=3(x), FMT=1(d), RM=3(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 164000: reporter [FPU_REF_MODEL] TXN INFO: OP=u, OP1=8010000000000008 (h), OP2=800ffffff7ffffff (h), OP3=8000000000000000 (h), RND=3 (h), BIS=63 (d), ES=10 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 164000: reporter [FPU_REF_MODEL_RSP] RESULT=8000000000000000(x), FLAGS= 3
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 173000: reporter [FPU_MONITOR_REQ] OP=FDIV, OP_A=2d00(x), OP_B=3df(x), IMM=3ff(x), TID=4(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 173000: reporter [FPU_SB_REQ] OP=FDIV, OP_A=2d00(x), OP_B=3df(x), IMM=3ff(x), TID=4(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 174000: reporter [FPU_MONITOR_REQ] OP=FCVT_F2I, OP_A=ffffffff007fff7f(x), OP_B=ffffffff80ffdfff(x), IMM=ffffffff00000002(x), TID=7(x), FMT=0(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 174000: reporter [FPU_SB_REQ] OP=FCVT_F2I, OP_A=ffffffff007fff7f(x), OP_B=ffffffff80ffdfff(x), IMM=ffffffff00000002(x), TID=7(x), FMT=0(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 175000: reporter [FPU_MONITOR_REQ] OP=FCVT_I2F, OP_A=ffffffff7fffffff(x), OP_B=ffffffffeb3d7457(x), IMM=ffffffff00000001(x), TID=6(x), FMT=0(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 175000: reporter [FPU_SB_REQ] OP=FCVT_I2F, OP_A=ffffffff7fffffff(x), OP_B=ffffffffeb3d7457(x), IMM=ffffffff00000001(x), TID=6(x), FMT=0(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 176000: reporter [FPU_MONITOR_REQ] OP=FADD, OP_A=ffffffffffff0004(x), OP_B=ffffffffffff0000(x), IMM=ffffffffffff0400(x), TID=2(x), FMT=2(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 176000: reporter [FPU_MONITOR_RSP] TID=7(x), RESULT=0(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 176000: reporter [FPU_SB_REQ] OP=FADD, OP_A=ffffffffffff0004(x), OP_B=ffffffffffff0000(x), IMM=ffffffffffff0400(x), TID=2(x), FMT=2(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 176000: reporter [FPU_SB_RSP] TID=7(x), RESULT=0(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 176000: reporter [FPU_REF_MODEL_REQ] OP=FCVT_F2I, OP_A=ffffffff007fff7f(x), OP_B=ffffffff80ffdfff(x), IMM=ffffffff00000002(x), TID=7(x), FMT=0(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 176000: reporter [FPU_REF_MODEL] TXN INFO: OP=v, OP1=ffffffff007fff7f (h), OP2=ffffffff80ffdfff (h), OP3=ffffffff00000002 (h), RND=1 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 176000: reporter [FPU_REF_MODEL_RSP] RESULT=0(x), FLAGS= 1
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 177000: reporter [FPU_MONITOR_RSP] TID=6(x), RESULT=ffffffff4effffff(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 177000: reporter [FPU_SB_RSP] TID=6(x), RESULT=ffffffff4effffff(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 177000: reporter [FPU_REF_MODEL_REQ] OP=FCVT_I2F, OP_A=ffffffff7fffffff(x), OP_B=ffffffffeb3d7457(x), IMM=ffffffff00000001(x), TID=6(x), FMT=0(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 177000: reporter [FPU_REF_MODEL] TXN INFO: OP=w, OP1=ffffffff7fffffff (h), OP2=ffffffffeb3d7457 (h), OP3=ffffffff00000001 (h), RND=1 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 177000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffff4effffff(x), FLAGS= 1
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 178000: reporter [FPU_MONITOR_RSP] TID=2(x), RESULT=ffffffffffff0400(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 178000: reporter [FPU_SB_RSP] TID=2(x), RESULT=ffffffffffff0400(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 178000: reporter [FPU_REF_MODEL_REQ] OP=FADD, OP_A=ffffffffffff0004(x), OP_B=ffffffffffff0000(x), IMM=ffffffffffff0400(x), TID=2(x), FMT=2(d), RM=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 178000: reporter [FPU_REF_MODEL] TXN INFO: OP=l, OP1=ffffffffffff0004 (h), OP2=ffffffffffff0000 (h), OP3=ffffffffffff0400 (h), RND=1 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 178000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffffffff0400(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 181000: reporter [FPU_MONITOR_RSP] TID=4(x), RESULT=ffffffffffff7e00(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 181000: reporter [FPU_SB_RSP] TID=4(x), RESULT=ffffffffffff7e00(x), EXCEPTION=0(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 181000: reporter [FPU_REF_MODEL_REQ] OP=FDIV, OP_A=2d00(x), OP_B=3df(x), IMM=3ff(x), TID=4(x), FMT=2(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 181000: reporter [FPU_REF_MODEL] TXN INFO: OP=o, OP1=ffffffffffff7e00 (h), OP2=ffffffffffff7e00 (h), OP3=ffffffffffff7e00 (h), RND=2 (h), BIS=15 (d), ES=4 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 181000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffffffff7e00(x), FLAGS= 0
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 183000: reporter [FPU_MONITOR_REQ] OP=FMADD, OP_A=ffffffff807ffdff(x), OP_B=ffffffff80000040(x), IMM=ffffffff8080fbe2(x), TID=0(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 183000: reporter [FPU_SB_REQ] OP=FMADD, OP_A=ffffffff807ffdff(x), OP_B=ffffffff80000040(x), IMM=ffffffff8080fbe2(x), TID=0(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/overlay/fpu_sequences.svh(103) @ 183000: uvm_test_top.env.fpu_agent.sequencer@@seq [FPU SEQUENCE IS NOT EMPTY] ID list size 1(d) is not empty
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 185000: reporter [FPU_MONITOR_RSP] TID=0(x), RESULT=ffffffff8080fbe2(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/overlay/fpu_sequences.svh(107) @ 185000: uvm_test_top.env.fpu_agent.sequencer@@seq [FPU SEQUENCE IS EMPTY] ID list size 0(d) is empty
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(130) @ 185000: reporter [FPU_SB_RSP] TID=0(x), RESULT=ffffffff8080fbe2(x), EXCEPTION=1(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_common/fpu_common_pkg.sv(121) @ 185000: reporter [FPU_REF_MODEL_REQ] OP=FMADD, OP_A=ffffffff807ffdff(x), OP_B=ffffffff80000040(x), IMM=ffffffff8080fbe2(x), TID=0(x), FMT=0(d), RM=2(x)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(91) @ 185000: reporter [FPU_REF_MODEL] TXN INFO: OP=r, OP1=ffffffff807ffdff (h), OP2=ffffffff80000040 (h), OP3=ffffffff8080fbe2 (h), RND=2 (h), BIS=31 (d), ES=7 (d)
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/ref_model_csim/rtl/fpu_refmodel.svh(127) @ 185000: reporter [FPU_REF_MODEL_RSP] RESULT=ffffffff8080fbe2(x), FLAGS= 1
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/env/fpu_sb.svh(212) @ 185000: uvm_test_top.env.fpu_sb [FPU SB] all_done: cumulative rsp=20/20
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/tests/base_test.svh(193) @ 185000: uvm_test_top [uvm_test_top] Fork disabled
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/tests/base_test.svh(198) @ 185000: uvm_test_top [uvm_test_top] Main phase complete
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/reset_gen/reset_driver_c.svh(200) @ 1685000: uvm_test_top.env.reset_driver [POST SHUTDOWN PHASE STARTED] ENTERING POST SHUTDOWN
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/core-v-verif/lib/cv_dv_utils/uvm/clock_gen/clock_driver_c.svh(103) @ 1685000: uvm_test_top.env.clock_driver [CLOCK_DRIVER_C] STARTING POST SHUTDOWN
+UVM_INFO C:/master/Seguimiento_Practicas/HZB/sim/src/cvfpu-uvm/fpu_agent/fpu_monitor.svh(208) @ 1686000: uvm_test_top.env.fpu_agent.monitor [fpu_monitor] REPORT: COLLECTED REQUEST TRANSACTIONS = 20, COLLECTED RESPONSE TRANSACTIONS =          20
+UVM_INFO C:XilinxVivadÿ‚4.2data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(13673) @ 1686000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :  174
+UVM_WARNING :    1
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[CLOCK_DRIVER_C]     2
+[FPU MONITOR]     1
+[FPU SB]     1
+[FPU SEQUENCE IS EMPTY]     1
+[FPU SEQUENCE IS NOT EMPTY]     1
+[FPU_MONITOR_REQ]    20
+[FPU_MONITOR_RSP]    20
+[FPU_REF_MODEL]    20
+[FPU_REF_MODEL_REQ]    20
+[FPU_REF_MODEL_RSP]    20
+[FPU_SB_REQ]    20
+[FPU_SB_RSP]    20
+[NO_DPI_TSTNAME]     1
+[NO_OTF]     2
+[POST SHUTDOWN PHASE STARTED]     1
+[PULSE GEN DRIVER]     1
+[RESET CONNECT]     1
+[RESET DONE]     1
+[RESET START]     1
+[RNTST]     1
+[SCOREBOARD]     3
+[STOPPED SEQUENCES]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+[WD START]     1
+[driver]     1
+[fpu_monitor]     1
+[fpu_top_cfg]     1
+[uvm_sequence_base]     1
+[uvm_test_top]     7
+[uvm_test_top.env.fpu_agent]     2
+
+$finish called at time : 1685500 ps : File "C:\Xilinx\Vivado\2024.2\data/system_verilog/uvm_1.2/xlnx_uvm_package.sv" Line 18699
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Nov  5 01:35:04 2026...

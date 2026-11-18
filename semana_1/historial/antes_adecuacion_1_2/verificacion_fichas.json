@@ -1,0 +1,36 @@
+{
+  "fecha": "2026-10-30",
+  "alcance": "Integridad de JSON, fuentes, fragmentos, intervalos e identificadores. No certifica verdad causal, revisión independiente o exhaustividad.",
+  "resultados": [
+    {
+      "archivo": "C01_simple_test.json",
+      "eventos": 4,
+      "fragmentos_y_hash": "verificados",
+      "json": "valido"
+    },
+    {
+      "archivo": "C02_scoreboard.json",
+      "eventos": 4,
+      "fragmentos_y_hash": "verificados",
+      "json": "valido"
+    },
+    {
+      "archivo": "C03_axi4_fail.json",
+      "eventos": 7,
+      "fragmentos_y_hash": "verificados",
+      "json": "valido"
+    },
+    {
+      "archivo": "C04_axi4_pass.json",
+      "eventos": 3,
+      "fragmentos_y_hash": "verificados",
+      "json": "valido"
+    },
+    {
+      "archivo": "C05_riscv.json",
+      "eventos": 6,
+      "fragmentos_y_hash": "verificados",
+      "json": "valido"
+    }
+  ]
+}

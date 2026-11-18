@@ -1,0 +1,147 @@
+{
+  "fecha": "2026-10-30",
+  "metodo": "Inspección estática mediante GitHub REST y lectura de documentación y resultados públicos. No se instalaron simuladores, no se ejecutaron tests y no se modificaron fuentes ni etiquetas de semana_1.",
+  "repositorios": [
+    {
+      "repo": "openhwfoundation/cv32e40p",
+      "branch": "master",
+      "estrellas_orientativas": 1317,
+      "commit": "b353438ff469c030c89f6804f3b24a2852880e8b",
+      "arbol_completo": true,
+      "numero_entradas": 408,
+      "logs_o_transcript_en_arbol": [],
+      "limite": "El árbol no incluye contenido de submódulos ni artefactos de CI. No encontrar .log no implica que no puedan generarse."
+    },
+    {
+      "repo": "lowRISC/ibex",
+      "branch": "master",
+      "estrellas_orientativas": 2143,
+      "commit": "f4515520c0045bb8ef1e72d46ed82499a6ac5f18",
+      "arbol_completo": true,
+      "numero_entradas": 4110,
+      "logs_o_transcript_en_arbol": [],
+      "limite": "El árbol no incluye contenido de submódulos ni artefactos de CI. No encontrar .log no implica que no puedan generarse."
+    },
+    {
+      "repo": "lowRISC/opentitan",
+      "branch": "master",
+      "estrellas_orientativas": 3723,
+      "commit": "41049e9deb40e0602cd5272c40398be380ae2637",
+      "arbol_completo": false,
+      "numero_entradas": null,
+      "logs_o_transcript_en_arbol": null,
+      "limite": "La consulta recursiva falló por tamaño/transporte. Se revisaron directorios y archivos concretos del bloque UART; no se afirma ausencia global de logs."
+    },
+    {
+      "repo": "openhwfoundation/core-v-verif",
+      "branch": "master",
+      "estrellas_orientativas": 736,
+      "commit": "1dfa4836868fc2fc8e3754ee5c1c43fb42948aa3",
+      "arbol_completo": true,
+      "numero_entradas": 4157,
+      "logs_o_transcript_en_arbol": [],
+      "limite": "El árbol no incluye contenido de submódulos ni artefactos de CI. No encontrar .log no implica que no puedan generarse."
+    },
+    {
+      "repo": "openhwfoundation/cvfpu-uvm",
+      "branch": "main",
+      "estrellas_orientativas": 26,
+      "commit": "2f787402256b76d00e397d72a00b57120db455cf",
+      "arbol_completo": true,
+      "numero_entradas": 87,
+      "logs_o_transcript_en_arbol": [],
+      "limite": "El árbol no incluye contenido de submódulos ni artefactos de CI. No encontrar .log no implica que no puedan generarse."
+    },
+    {
+      "repo": "pulp-platform/common_verification",
+      "branch": "master",
+      "estrellas_orientativas": 58,
+      "commit": "c5d97a1fae01d2d8e8e311dee341b6b8849dcf38",
+      "arbol_completo": true,
+      "numero_entradas": 24,
+      "logs_o_transcript_en_arbol": [],
+      "limite": "El árbol no incluye contenido de submódulos ni artefactos de CI. No encontrar .log no implica que no puedan generarse."
+    }
+  ],
+  "evidencia_archivos": [
+    {
+      "key": "fpuMon",
+      "url": "https://github.com/openhwfoundation/cvfpu-uvm/blob/main/fpu_agent/fpu_monitor.svh",
+      "blob_sha": "35b2621580d22f6388b4aa86c458647fd6c45484"
+    },
+    {
+      "key": "fpuSB2",
+      "url": "https://github.com/openhwfoundation/cvfpu-uvm/blob/main/env/fpu_sb.svh",
+      "blob_sha": "564260d970941ad3e94aad6f7b0829a3dda51a76"
+    },
+    {
+      "key": "fpuTxn",
+      "url": "https://github.com/openhwfoundation/cvfpu-uvm/blob/main/fpu_agent/fpu_txn.svh",
+      "blob_sha": "5ee5ce9b8854c10a4e8cc43d1deec0cd79f8dd0a"
+    },
+    {
+      "key": "fpuPatterns",
+      "url": "https://github.com/openhwfoundation/cvfpu-uvm/blob/main/scripts/patterns/sim_patterns.pat",
+      "blob_sha": "7320e15ed613267e19939876c3e4c48038452f32"
+    },
+    {
+      "key": "fpuRegs",
+      "url": "https://github.com/openhwfoundation/cvfpu-uvm/blob/main/simu/fpu_reg_list",
+      "blob_sha": "dcd27f6672148fef10ca9f8c47f8bb8e42958ee1"
+    },
+    {
+      "key": "otMon",
+      "url": "https://github.com/lowRISC/opentitan/blob/master/hw/dv/sv/uart_agent/uart_monitor.sv",
+      "blob_sha": "c53e45088cc42f785eb96e56e15055b5d462574c"
+    },
+    {
+      "key": "otSB",
+      "url": "https://github.com/lowRISC/opentitan/blob/master/hw/ip/uart/dv/env/uart_scoreboard.sv",
+      "blob_sha": "1e823104caa65058e2a4d5b61ad7545dfa891ef6"
+    },
+    {
+      "key": "otCfg",
+      "url": "https://github.com/lowRISC/opentitan/blob/master/hw/ip/uart/dv/uart_sim_cfg.hjson",
+      "blob_sha": "e3ff8c20b9c87e1ace849dd0d616132186fa6fdd"
+    },
+    {
+      "key": "ibexDV",
+      "url": "https://github.com/lowRISC/ibex/blob/master/dv/uvm/core_ibex/README.md",
+      "blob_sha": "d1fdc0920e2da366dd9d8521bcdc230087ecc300"
+    },
+    {
+      "key": "ibexCosim",
+      "url": "https://github.com/lowRISC/ibex/blob/master/dv/uvm/core_ibex/common/ibex_cosim_agent/ibex_cosim_scoreboard.sv",
+      "blob_sha": "f55e1936f64ca35aa6e35b82c16bf5558bbd260c"
+    },
+    {
+      "key": "coreResult",
+      "url": "https://github.com/openhwfoundation/core-v-verif/blob/master/cv32e40p/sim/uvmt/README.md",
+      "blob_sha": "1fc90c92aeba2278338cfd35b31ae4658b26d6dd"
+    },
+    {
+      "key": "commonTimeout",
+      "url": "https://github.com/pulp-platform/common_verification/blob/master/src/sim_timeout.sv",
+      "blob_sha": "fceca7b22791907c8947a191b0f5c94b29705e30"
+    },
+    {
+      "key": "commonWdog",
+      "url": "https://github.com/pulp-platform/common_verification/blob/master/src/stream_watchdog.sv",
+      "blob_sha": "d936f450c1779ffc07d466a05143160dc9aaadd2"
+    }
+  ],
+  "reportes": [
+    {
+      "url": "https://ibex.reports.lowrisc.org/opentitan/latest/report.html",
+      "fecha_reportada": "2026-10-30",
+      "revision_reportada": "f451552",
+      "alcance": "Resultados y extractos de fallos con números de línea; no se comprobó descarga completa de rtl_sim.log."
+    },
+    {
+      "url": "https://reports.opentitan.org/hw/ip/uart/dv/latest/report.html",
+      "fecha_reportada": "2025-02-08",
+      "revision_reportada": "9f20940d49",
+      "alcance": "Reporte histórico con resultados y extractos de fallos. La etiqueta latest no garantiza actualidad ni acceso al log completo."
+    }
+  ]
+}

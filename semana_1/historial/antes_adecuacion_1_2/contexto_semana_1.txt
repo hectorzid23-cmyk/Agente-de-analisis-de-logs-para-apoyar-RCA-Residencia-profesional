@@ -1,0 +1,108 @@
+CONTEXTO DE LA SEMANA 1 — AGENTE CONSULTABLE DE LOGS PARA RCA
+Fecha: 26 de octubre de 2026
+Versión: 1.0. Decisiones locales de trabajo propuestas por el asistente a solicitud del estudiante.
+
+INTRODUCCIÓN
+Este archivo incorpora lo ya definido por el estudiante y las tareas 1–3 de la primera semana: tres preguntas de RCA, reglas locales de PASS/FAIL y nomenclatura de señales y referencias. Complementa la ruta técnica revisada; ante diferencias con el antiguo contexto_proyecto_residencia.txt, prevalece la visión actual de un agente consultable que entrega evidencia a una IA de RCA. No se ha implementado software en esta actividad.
+La tarea 4 (procedimiento de etiquetado manual de cinco casos) se documenta por separado en Google Drive. Su contenido queda pendiente de incorporar a este archivo en una revisión posterior, por indicación del estudiante. No se declara cerrada toda la semana ni aprobado el alcance por el asesor.
+El trabajo de esta conversación se limita a las semanas 1 y 2; las semanas siguientes sólo orientan compatibilidad del diseño.
+
+1. DEFINICIONES PREVIAS DEL ESTUDIANTE
+- Formato prioritario: logs de simulación con estructura UVM. Después podrán añadirse otros formatos; no asumir que todo archivo .log es UVM.
+- Política de datos: pública. Se trabajará con fuentes públicas conservando procedencia y versión. Esto no cambia automáticamente los permisos de Google Drive ni equivale a asignar una licencia nueva a material de terceros.
+- Obtención inicial: el estudiante considera cubierta la solicitud de logs con las fuentes encontradas en “Conjunto de datos”. No se requiere repetirla para comenzar.
+- Límite de esa cobertura: disponer de ejemplos no significa tener un corpus validado de causas raíz, ni corridas reproducidas localmente. No se presupone que los datos contengan señales, seeds o revisiones ausentes.
+- Contexto actual: agente de análisis de logs de simulación que entrega hechos, referencias y relaciones candidatas mediante una futura biblioteca/API JSON y comandos equivalentes. La IA RCA formula y decide hipótesis causales. Un modelo pequeño es una opción posterior, no una fuente de verdad ni un entrenamiento desde cero.
+- Alcance mínimo: simulación y regresión; UVM, assertions y resultados cuando estén presentes. Síntesis, potencia, hardware y cambios automáticos al testbench quedan fuera del mínimo.
+
+2. TRES PREGUNTAS REALES DE UN CLIENTE RCA
+Son solicitudes del RCA al agente de evidencia, formuladas para una investigación iterativa. No son conclusiones ni implican implementar ahora las funciones de semanas posteriores.
+
+P1 — Delimitar el fallo y seleccionar el primer síntoma
+“Para esta corrida, ¿qué evidencia permite clasificar la verificación como PASS, FAIL o INDETERMINADO, cuál es el primer síntoma adverso observado y qué ocurrió inmediatamente antes y después? Distingue errores funcionales, fallos de assertions y problemas de compilación o ejecución; devuelve test, seed, tiempos, componentes y archivos sólo cuando estén observados, junto con los eventos y líneas que justifican la clasificación y cualquier contradicción entre resúmenes.”
+Respuesta esperada: estado acotado, primer síntoma por orden observado, contexto breve y referencias verificables. Primer síntoma no significa causa inicial. Si hay errores anteriores a la simulación, identificarlos como tales. No elegir un warning de rendimiento como defecto funcional sin evidencia.
+Aplicación: el log AXI4 fallido tiene cinco UVM_ERROR y TEST FAILED aunque vsim informe Errors: 0. El primer MISMATCH observado merece investigación; el éxito del proceso no anula el fallo del test.
+
+P2 — Discriminar relaciones y alternativas
+“Tomando el evento seleccionado, ¿qué otros eventos podrían pertenecer al mismo incidente y qué evidencia permite relacionarlos o separarlos? Organiza una cronología y contrasta componente, ID, dirección o transacción, datos esperados/observados, señal explícita y origen del mensaje; distingue coincidencias, resúmenes del mismo fallo y posibles efectos posteriores. Señala hipótesis alternativas, contradicciones y la información que falta para decidir si comparten causa.”
+Respuesta esperada: miembros y regla de cada relación candidata, evidencia de apoyo y límites; permitir sin relación demostrable. No atribuir causalidad por cercanía temporal ni contar un resumen como un nuevo fallo independiente.
+Aplicación: cuatro discrepancias de bytes de AXI4 comparten tiempo, scoreboard y direcciones contiguas; el resumen declara un beat incorrecto. Esto respalda un agrupamiento candidato, pero no prueba qué lógica produjo el dato incorrecto.
+
+P3 — Identificar evidencia discriminante y valorar otra corrida
+“¿Qué observación adicional permitiría distinguir las hipótesis que siguen abiertas? Si existe otra corrida comparable, identifica qué síntomas persisten, desaparecen o aparecen y qué diferencias de test, seed, configuración o revisión impiden atribuir el cambio a una corrección. Si falta evidencia, especifica la señal, transacción o punto de observación que habría que registrar y qué resultado apoyaría o debilitaría cada hipótesis.”
+Respuesta esperada: evidencias presentes, vacíos concretos y propuesta de observación; nunca modificar ni lanzar simulaciones desde el agente. Una mejora entre dos logs no demuestra por sí sola una causa.
+Aplicación: el par AXI4 comparte test y seed y pasa de un beat incorrecto a cero; faltan revisiones exactas para demostrar que una modificación concreta causó la mejora. La pregunta se conserva como caso de uso futuro; compare_runs e instrumentación no se implementan en semanas 1–2.
+
+3. REGLAS LOCALES DE RESULTADO (POLÍTICA LOCAL-PF-1.0)
+3.1 Separar dimensiones
+Registrar resultado_verificacion = PASS | FAIL | INDETERMINADO, estado_ejecucion = COMPLETA | INCOMPLETA | ERROR_HERRAMIENTA | NO_DETERMINADO, y calidad_evidencia = SUFICIENTE | PARCIAL | CONTRADICTORIA. Conservar además resultado_declarado por testbench o fuente. Estas son etiquetas manuales de semana 1; no constituyen todavía el contrato JSON de semana 2.
+PASS se refiere a las comprobaciones de esa prueba y corrida; no certifica todo el diseño ni suficiencia de cobertura.
+
+3.2 Regla FAIL
+Asignar FAIL si hay evidencia inequívoca, en el alcance de la prueba, de un UVM_ERROR/UVM_FATAL no esperado, assertion fallida no esperada, discrepancia de checker/scoreboard, TEST FAILED explícito, o incumplimiento de un criterio de finalización documentado.
+Un resumen UVM con ERROR/FATAL > 0 también respalda FAIL aunque falten los eventos individuales: registrar evidencia parcial y no inventar sus posiciones.
+Si el log se corta después de un fallo inequívoco, mantener FAIL y ejecución INCOMPLETA. No borrar evidencia de fallo por faltar el cierre.
+Si compilación/elaboración impiden ejecutar, marcar ERROR_HERRAMIENTA e INDETERMINADO para verificación funcional, salvo que ya exista evidencia funcional inequívoca de una ejecución identificada. No atribuir al DUT un problema de licencia o sintaxis del testbench.
+
+3.3 Regla PASS
+Exigir conjuntamente:
+a) Identificación suficiente de la corrida y finalización esperada alcanzada; $finish por sí solo no basta.
+b) Evidencia positiva de cumplimiento: TEST PASSED, marcador SUCCESS de propósito explícito, o criterio terminal propio de la prueba documentado y comprobado.
+c) Ausencia de fallos no esperados en la evidencia disponible; resumen final UVM sin ERROR/FATAL cuando esté presente y sin contradicciones sin resolver.
+d) Integridad suficiente para sostener el resultado; un recorte sin contexto no basta.
+Para sv-tests simple_test: SUCCESS de llamada al test + resumen 0/0 + cierre. Para scoreboard sv-tests: estímulo observado + comparación coincidente que define el propósito de esa muestra + resumen 0/0 + cierre. Un match aislado no autoriza PASS en cualquier otro test.
+
+3.4 Regla INDETERMINADO
+Usar si no se cumplen PASS ni FAIL: log vacío, fragmento sin cierre, cero errores sin comprobación positiva, resultados irreconciliables o criterio de éxito desconocido. Si sólo hay una etiqueta externa de éxito, conservarla como declaración, sin convertirla automáticamente en PASS local.
+RISC-V: ECALL y cierre con cero UVM_ERROR/FATAL no certifican por sí solos éxito arquitectónico; hasta documentar el criterio del test, conservar INDETERMINADO.
+
+3.5 Warnings, pruebas negativas y contradicciones
+- Un warning no produce FAIL automáticamente. Conservar severidad original, etapa y motivo. NO_DPI_USED y NO_VISIT_CHECK describen limitaciones del entorno; no prueban defecto del circuito.
+- Warnings de compilación, UVM y simulador se contabilizan por separado. No existe umbral de cobertura obligatorio sin acordarlo para esa prueba.
+- Una prueba negativa puede producir errores esperados y aun así cumplir su objetivo. La excepción debe estar declarada previamente por test, patrón/ID, cantidad y condición esperada, con referencia a la especificación; nunca convertir todos los errores en esperados porque el archivo diga PASS.
+- TEST PASSED junto con un error funcional no esperado produce FAIL y evidencia CONTRADICTORIA. “Errors: 0” de vsim y UVM_ERROR > 0 no son una contradicción lógica: son dominios distintos; el resultado funcional es FAIL.
+- Si una contradicción no permite identificar qué ejecución o test se está describiendo, separar corridas o usar INDETERMINADO hasta resolverla.
+
+3.6 Conteos y precedencia
+Distinguir cantidad de mensajes, discrepancias/beat/transacciones declaradas e incidentes candidatos. Cinco UVM_ERROR no equivalen a cinco causas raíz.
+Las filas del UVM Report Summary son agregados: no sumarlas como eventos individuales ni sumar sus cuentas a los mensajes. Conservar conteo observado y declarado por separado. El mensaje que anuncia el propio resumen puede explicar una diferencia de INFO; documentarla en vez de forzar igualdad.
+Orden de decisión: identificar alcance y excepciones documentadas; buscar fallo inequívoco; valorar ejecución; comprobar requisitos PASS; si faltan, INDETERMINADO. Guardar siempre motivo y líneas.
+El nombre del archivo, su extensión, una columna externa simulation_success o un código de salida cero no sustituyen la evidencia del test.
+
+4. NOMENCLATURA LOCAL DE SEÑALES Y REFERENCIAS (LOCAL-REF-1.0)
+Objetivo: distinguir entidades y conservar el texto real del log. No se renombra el RTL ni se inventan rutas para completar campos.
+
+4.1 Clases de referencia
+- signal_path: señal RTL/interfaz explícitamente identificada.
+- component_path: componente UVM emisor, por ejemplo uvm_test_top.env.scoreboard o env.comp.
+- scope_path: ámbito HDL explícito, por ejemplo /axi4_tb_top; no implica una señal.
+- source_file y source_line: lugar de emisión o referencia de código que el log indica. No necesariamente archivo defectuoso.
+- field_name, address, pc, transaction_id: campo de transacción, dirección, contador de programa o identificador. No tratarlos como señales físicas.
+- message_id: texto entre corchetes como RESULT o axi4_scoreboard; no es una jerarquía.
+
+4.2 Conservación y forma de consulta
+Guardar raw_text exactamente y, cuando sea inequívoco, una representación de consulta por segmentos. Forma legible preferida: top.instancia.subinstancia.señal[índice] o [msb:lsb].
+Ejemplo exclusivamente ilustrativo, NO observado en estos logs: tb_top.dut.axi_if.rvalid.
+Mantener mayúsculas/minúsculas, índices, rangos, jerarquías generate e identificadores escapados. No convertir a minúsculas, quitar índices ni separar puntos dentro de identificadores escapados. Si no puede interpretarse con certeza, conservar sólo la referencia literal y marcar ambigua.
+Aceptar /top/dut/signal como sintaxis del simulador conservando el original; crear alias con puntos sólo con una regla explícita y reversible, nunca mediante sustitución indiscriminada.
+No anteponer tb_top.dut a nombres cortos. Un nombre rdata sin ámbito permanece parcial; no se fusiona con otro rdata de una instancia distinta.
+Para señales nuevas que se documenten en el futuro, usar nombres descriptivos snake_case, sufijo _n para activo bajo y clk/rst_n como convenciones recomendadas. No imponerlas a nombres existentes ni deducir polaridad de un nombre sin especificación.
+
+4.3 Origen y ausencia
+Cada referencia lleva origen = explícito_log | resuelto_regla_documentada; si está ausente, marcar no_observado. Una propuesta de instrumentación se etiqueta propuesta y no se introduce como señal observada.
+Un componente UVM nunca se copia a signal_path. Un PC o addr=0x100 no es una señal. testbench.sv(1342) representa archivo y línea de código; la línea 147 del .log es una coordenada diferente.
+Separar log_file + log_line_start/end de source_file + source_line. Numerar líneas físicas desde 1, inclusive, contando vacías. Mantener prefijos # y mensajes multilínea en el original.
+No convertir tiempos sin unidad validada. Conservar @ 1025000 como valor literal y unidad no determinada en ese evento; -timescale y un cierre en ns requieren verificar la convención de impresión antes de relacionarlos numéricamente.
+Identidad de una referencia: corrida/instantánea + clase + ruta literal o alias respaldado. Unir nombres entre corridas exige revisar equivalencia, no sólo coincidencia textual.
+
+5. FUENTES Y ESTADO DE ESTAS DECISIONES
+Ruta técnica: https://docs.google.com/document/d/11nr1JTTRA4npCvqcUrdVgrics5_8SSlhgF1YMALvUoI/edit
+Conversaciones consultadas: “Ruta técnica” y “Conjunto de datos”.
+Muestras verificadas de sv-tests: fuentes_logs_revision/LEEME.md, procedencia.json, verificacion.json y muestras/.
+Fuentes AXI4 y RISC-V consultadas el 26-10-2026:
+https://github.com/Tharunreddym/axi4-verification/blob/main/logs/burst_read_test_seed1_questa_FAIL.log
+https://github.com/Tharunreddym/axi4-verification/blob/main/logs/burst_read_test_seed1_questa.log
+https://github.com/isbogdanov/riscv-core-dv-uvm/blob/main/sample_logs/uvm_classic/uvm_run.log
+Se conservaron copias de consulta en semana_1/fuentes/. Son contenido publicado, no simulaciones locales.
+Políticas propuestas a solicitud del estudiante; aprobación del asesor no registrada.
+Pendiente para cierre integral: validación con asesor y etiquetado revisado; el procedimiento de tarea 4 se entrega aparte y se incorporará aquí cuando se solicite.

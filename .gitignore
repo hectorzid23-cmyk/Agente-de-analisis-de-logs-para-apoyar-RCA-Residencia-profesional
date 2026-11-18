@@ -1,0 +1,8 @@
+# Cachés y resultados regenerables de las demostraciones.
+__pycache__/
+*.py[cod]
+/semana_2/demostracion_manual/
+
+# Colecciones externas conservadas en Archivos-adicionales-residencia.
+/uvm_projects_vivado/
+/uvm_projects_vivado_variants/

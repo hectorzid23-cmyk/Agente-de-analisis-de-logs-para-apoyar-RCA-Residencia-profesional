@@ -1,0 +1,124 @@
+CONTEXTO DEL PROYECTO DE RESIDENCIA PROFESIONAL
+Agente consultable de análisis de logs de simulación para apoyar RCA
+
+PERFIL DEL ESTUDIANTE (ANTECEDENTES)
+
+- Nivel en diseño y verificación digital: entre básico e intermedio.
+- Tiempo disponible para el proyecto: 2 meses.
+- Asesor: doctor en investigación en diseño y verificación digital.
+- Estado al planteamiento inicial (14 de octubre de 2026): aún no había código desarrollado; se trabajaba en la definición del proyecto y los formularios institucionales.
+
+CONCEPTOS DE APOYO (ANTECEDENTES)
+
+Logs del sistema
+  Archivos de registro que documentan lo ocurrido durante la ejecución de una
+  herramienta o sistema. Tipos principales:
+  - Simulación: mensajes $display, UVM_INFO / UVM_WARNING / UVM_ERROR /
+    UVM_FATAL, resultados de assertions (SVA).
+  - Síntesis e implementación: reportes de timing, área y potencia.
+  - Ejecución en hardware: salida por UART, capturas de ILA.
+  - Regresión: tests que pasaron o fallaron, cobertura, seeds utilizados.
+
+Summary (resumen) de logs
+  Condensar la información relevante del log en un reporte corto. Ejemplos de
+  datos a extraer:
+  - Tests PASS / FAIL.
+  - Conteo de errores y warnings por tipo.
+  - Cobertura alcanzada frente a la meta.
+  - Tiempo de simulación.
+  - Timing cumplido o violado, área y potencia.
+  Normalmente se automatiza con scripts (Python, grep/awk) que buscan patrones
+  y cuentan ocurrencias.
+
+RTL (Register Transfer Level)
+  Descripción de hardware en un HDL (Verilog, SystemVerilog, VHDL) que define
+  registros, lógica combinacional, control y temporización por ciclo de reloj.
+  Es el punto de entrada a la síntesis y el diseño que se verifica (DUT).
+
+I/O (por si aparece en la documentación)
+  Puede referirse a: (1) pines físicos del chip, (2) puertos de un módulo RTL,
+  (3) interfaz del sistema con el exterior, (4) señales que el testbench
+  conduce y monitorea en el DUT.
+
+RUTA TÉCNICA ACTUALIZADA
+
+Ruta técnica de ocho semanas
+Agente consultable de análisis de logs de simulación para apoyar RCA · Residencia profesional en Cinvestav
+Versión revisada · 30 de octubre de 2026 · Semanas relativas al inicio efectivo del desarrollo.
+1. Propósito y resultado esperado
+Construir un agente especializado que ingiera logs de simulación, extraiga hechos verificables y responda consultas sucesivas de un usuario o de una IA de análisis de causa raíz (RCA). Incluirá una comprobación trazable entre transacciones del monitor y su recepción en el scoreboard. La IA de RCA decidirá qué investigar y formulará hipótesis; nuestro agente entregará evidencia acotada y contexto técnico sin obligarla a leer el log completo.
+El prototipo tendrá un núcleo de extracción y consulta determinista, una interfaz programática con entradas y salidas JSON y comandos equivalentes para uso humano. Un modelo pequeño podrá priorizar, agrupar y explicar eventos a partir de evidencia recuperada. No se propone entrenar un modelo desde cero en dos meses. Se comparará su aporte con una versión sin modelo.
+Alcance inicial: logs de simulación y regresión, especialmente mensajes UVM, fallos de assertions, marcadores de prueba, seeds, tiempos y referencias a jerarquías de señales o archivos cuando existan. Reportes de síntesis, potencia, hardware y modificación automática del testbench quedan fuera del entregable mínimo.
+2. Arquitectura y límites de responsabilidad
+Flujo de datos: ingestión del log → parser por formatos → índice de eventos y referencias → funciones de consulta → agrupación y explicación opcional con modelo pequeño → cliente humano o RCA. La fuente de verdad es el log y sus eventos normalizados; el texto del modelo nunca sustituye un conteo ni una referencia.
+Módulos propuestos: (a) lector por líneas y extractor de metadatos como UVM_TESTNAME; (b) extractores UVM y adaptadores por simulador; (c) normalizador e índice consultable; (d) correlacionador monitor → scoreboard; (e) funciones con validación de parámetros y límites de respuesta; (f) módulo opcional de relaciones candidatas; (g) CLI que invoca las mismas funciones que el cliente de IA.
+El agente puede sugerir que dos errores comparten una secuencia, una señal, un componente o un origen probable, pero debe devolver la justificación y el grado de incertidumbre. La RCA conserva la decisión causal. En ausencia de señal, archivo o vínculo temporal explícito, devolver «no observado» o «no determinado»; no inventar rutas jerárquicas ni archivos fuente.
+Una nueva simulación se registra como otra ejecución (run_id). La comparación entre ejecuciones identifica qué eventos desaparecieron, persistieron o surgieron. El agente no modifica el testbench ni lanza simulaciones en el entregable mínimo; puede proponer qué señal, mensaje o punto de instrumentación convendría añadir para la siguiente ejecución.
+Correlación entre monitor y scoreboard
+Objetivo: comprobar que las transacciones publicadas por el monitor llegan al scoreboard con la misma información relevante. Registrar, cuando el testbench lo permita, un mensaje en la publicación del monitor y otro en la recepción del scoreboard. La comparación verifica el tramo monitor → scoreboard; no demuestra por sí sola que el DUT produjo todos los eventos esperados.
+Clave de correlación propuesta: run_id, test_name, seed, interfaz/canal, dirección, transaction_id y, si aplica, beat_id. Comparar además tiempo, dirección, dirección de memoria, datos o huella de datos y otros campos pertinentes al protocolo. Elegir con el asesor los campos que deben ser iguales y cuáles pueden transformarse; no exigir igualdad de los mensajes completos.
+Resultado por transacción: matched, missing_at_scoreboard, unexpected_at_scoreboard, duplicate, field_mismatch o ambiguous. Presentar conteos y pares de líneas de evidencia. Si faltan IDs, usar una clave compuesta y marcar la incertidumbre, especialmente con reordenamiento, reintentos o relaciones uno a varios. La igualdad de conteos es sólo una comprobación inicial: también deben compararse identificadores y campos.
+Los logs de ejemplo de burst_read_test contienen +UVM_TESTNAME y un resumen agregado del scoreboard, pero no mensajes por transacción del monitor. Por ello la correlación detallada queda NOT_OBSERVABLE en esos archivos. En la semana 1 se acordará la instrumentación mínima o se buscarán logs que ya incluyan ambos lados; el agente no debe inventar un MATCH a partir del resumen agregado.
+Política de PASS, FAIL e INDETERMINADO
+FAIL: existe marcador explícito de prueba fallida, UVM_ERROR, UVM_FATAL, assertion fallida, discrepancia del scoreboard o pérdida/alteración monitor → scoreboard confirmada para la ejecución evaluada. Cada causa debe citar evento y línea. Una evidencia concluyente de FAIL prevalece aunque el log esté incompleto.
+PASS: hay cierre y marcador explícito de éxito, no hay evidencia de FAIL ni contradicciones sin resolver y, cuando la correlación monitor → scoreboard sea obligatoria para ese test, ésta terminó sin pérdidas ni discrepancias. Un UVM_WARNING por sí solo no cambia PASS a FAIL.
+INDETERMINADO: falta cierre o resultado explícito, el log está truncado, hay señales contradictorias, la correlación exigida no es observable por falta de mensajes de uno de los lados, o el emparejamiento es ambiguo. La ausencia de UVM_ERROR/UVM_FATAL no demuestra PASS. Reportar la razón y el dato o instrumentación faltante para resolverla; no convertir automáticamente una incertidumbre en éxito o fallo.
+UVM_WARNING: extraerlo y conservarlo como pista para el RCA, con ID, mensaje, tiempo, componente, archivo/línea y eventos cercanos. Priorizarlo por relación temporal, señal o componente con un fallo, sin llamarlo causa raíz ni usarlo como disparador automático de FAIL.
+UVM_TESTNAME: extraer el valor de +UVM_TESTNAME=<nombre> como metadato test_name para identificar el test y agrupar corridas. No es una severidad ni un criterio de fallo. Si hay nombres contradictorios entre comando y mensajes del test, conservar ambas evidencias y señalar la discrepancia.
+3. Contrato de datos y API inicial
+Identificadores y estructura común
+Toda respuesta devuelve schema_version, run_id, test_name si está disponible, consulta aplicada, datos, warnings y provenance. Cada evento contiene event_id, severidad/tipo, mensaje normalizado, marca temporal o tiempo de simulación si existe, test/seed si existe, ruta del archivo de log, líneas de inicio/fin y fragmento breve. Para eventos de monitor/scoreboard se añaden transaction_id, interfaz, dirección y campos comparables cuando aparezcan. signal_path, source_file y source_line son opcionales y sólo se devuelven con evidencia.
+Los parámetros run_id y event_id apuntan a una instantánea inmutable. Para grandes resultados: limit, cursor y total_matches; límites por defecto modestos. Se permite filtrar por severidad, tipo, test, intervalo de tiempo, texto o expresión regular controlada. Las respuestas tienen un campo status (ok, partial, not_found, invalid_input) y nunca ejecutan comandos de shell recibidos del cliente.
+Funciones obligatorias del prototipo
+ingest_log(path | paths, metadata opcional) → run_id, archivos procesados, cantidad de líneas, formatos detectados, advertencias. Sólo lee rutas autorizadas. Puede invocarse desde CLI o desde el adaptador para otra IA.
+get_log_summary(run_id, scope opcional) → test_name, estado PASS/FAIL/INDETERMINADO y razón, conteos, UVM_WARNING como pistas, errores relevantes, estado de correlación monitor → scoreboard, ventanas temporales y event_id de respaldo. Es una síntesis factual y acotada para la primera consulta del RCA.
+count_events(run_id, filters) → total y desglose por severidad/tipo/test, incluidos UVM_WARNING y eventos de monitor/scoreboard, con reglas de conteo y advertencias. Los totales del «UVM Report Summary» se contrastan con los mensajes individuales; no se suman dos veces.
+search_events(run_id, filters, limit, cursor) → lista paginada de eventos con event_id, línea, tiempo y breve contexto. Orden estable para que el RCA pueda seleccionar un problema concreto.
+get_event_context(run_id, event_id, before, after) → evento, líneas cercanas acotadas, eventos vecinos y referencias encontradas. El tamaño máximo impide entregar el log completo por accidente.
+get_signal_refs(run_id, event_id o signal_path) → rutas jerárquicas, apariciones, tiempos y archivos/líneas de log relacionados; source_file sólo si está explícito o se resolvió con una regla documentada.
+group_related_events(run_id, filters opcionales) → grupos candidatos con miembros, tipo de relación (temporal, mismo ID, señal, componente, secuencia o warning relacionado), evidencia y confidence/calificación. «Relacionado» no equivale a causa raíz. En la primera versión se usan reglas explicables; el modelo pequeño se evalúa como mejora posterior.
+compare_runs(base_run_id, new_run_id, filters opcionales) → eventos persistentes, nuevos y desaparecidos, cambios de conteo y de estado, con criterios de correspondencia explícitos. Útil después de instrumentar o repetir pruebas.
+correlate_monitor_scoreboard(run_id, filters opcionales) → estado global MATCH, LOSS, DIVERGENCE o NOT_OBSERVABLE; pares de transacciones, ausentes, duplicadas, campos distintos, ambiguas y líneas de evidencia. Una función opcional suggest_instrumentation(run_id, event_id, question) propone cómo observar lo que falta en la siguiente corrida; no modifica ni ejecuta el testbench.
+Ejemplo de intercambio iterativo
+1) El RCA llama get_log_summary(run_id), identifica el test mediante test_name y recibe errores, warnings como pistas y el estado de correlación. 2) Llama search_events y get_event_context sobre un evento. 3) Llama correlate_monitor_scoreboard para localizar transacciones ausentes o campos alterados; si faltan mensajes del monitor, recibe NOT_OBSERVABLE. 4) Contrasta warnings y señales relacionadas mediante get_signal_refs y group_related_events. 5) Si faltan datos, solicita instrumentación y una nueva corrida; compare_runs permite revisar qué cambió. El RCA mantiene la responsabilidad de formular la causa raíz.
+4. Ruta semanal y criterios de cierre
+Semana 1 · Acordar casos de uso y obtener datos
+Con el asesor, elegir un formato principal de logs y 2–3 preguntas reales de RCA. Revisar los logs ya reunidos y solicitar corridas instrumentadas que registren cada transacción en el monitor y en la recepción del scoreboard. Definir reglas locales de PASS/FAIL/INDETERMINADO, campos comparables y tratamiento de reordenamiento. Etiquetar casos de éxito, error, warning e incertidumbre. Si sólo hay resumen agregado, documentar la limitación de observabilidad. 
+Entregable y cierre: catálogo de formatos, ejemplos de consultas y alcance aprobado; se conoce qué evidencias puede mostrar el log y cuáles no.
+Semana 2 · Esquema, ingestión y trazabilidad
+Definir schema_version, run_id, event_id, test_name y el contrato JSON. Construir lector por líneas, almacenamiento local de eventos y pruebas para logs vacíos, truncados o con codificación distinta. Extraer +UVM_TESTNAME cuando esté presente. Diseñar la clave de correlación y los estados de observabilidad sin asumir que los mensajes del monitor siempre existen.
+Entregable y cierre: ingest_log y modelo de datos documentados; cada evento del conjunto de desarrollo puede rastrearse a su fuente.
+Semana 3 · Parser y consultas factuales
+Implementar extractores UVM, incluyendo UVM_WARNING como pista, resultados de prueba, assertions, tiempos y mensajes de monitor/scoreboard presentes en las muestras. Agregar count_events y search_events con filtros y conciliación del resumen UVM. Implementar la política explícita de PASS/FAIL/INDETERMINADO, con casos de prueba para logs incompletos y contradictorios.
+Entregable y cierre: primera API consultable; conteos y búsquedas coinciden con los casos anotados o reportan explícitamente lo ambiguo.
+Semana 4 · Resumen, contexto y CLI
+Implementar get_log_summary, get_event_context y get_signal_refs; exponer test_name, warnings y razones de estado. Crear comandos humanos equivalentes con opción --json. Demostrar una consulta inicial y otra de profundización, incluyendo un caso INDETERMINADO que explique qué evidencia falta.
+Entregable y cierre: una IA cliente o un usuario puede hacer al menos dos consultas consecutivas y recibir referencias verificables sin leer el log completo.
+Semana 5 · Relaciones entre eventos
+Implementar correlate_monitor_scoreboard por ID y campos relevantes, con detección de ausentes, duplicados, alteraciones y emparejamientos ambiguos. Sobre esas evidencias, implementar agrupación explicable de errores y warnings por tiempo, señal y componente. Evaluar por separado exactitud de correlación y calidad de grupos candidatos.
+Entregable y cierre: grupos candidatos con miembros, regla aplicada, evidencias y casos de «sin relación demostrable».
+Semana 6 · Modelo pequeño y ciclo entre corridas
+Evaluar un modelo pequeño, preferiblemente local si los datos lo exigen, sobre ventanas de eventos recuperadas, no sobre logs completos. Pedirle priorizar y explicar relaciones candidatas en un formato validado; comparar con reglas y desactivar afirmaciones sin respaldo. Implementar compare_runs y, si el tiempo lo permite, suggest_instrumentation.
+Entregable y cierre: demostración de consulta → hipótesis → nueva corrida → comparación, real o simulada con dos logs; decisión documentada de conservar o descartar el modelo según resultados.
+Semana 7 · Evaluación de extremo a extremo
+Congelar un conjunto de evaluación separado del desarrollo. Medir conteos, identificación de test por UVM_TESTNAME, clasificación PASS/FAIL/INDETERMINADO, recuperación de warnings, exactitud de emparejamiento monitor/scoreboard y detección de pérdidas, además de fidelidad, tamaño de salida y latencia. Incluir casos sin mensajes de monitor para verificar NOT_OBSERVABLE.
+Entregable y cierre: tabla de resultados, errores conocidos y correcciones prioritarias; todos los ejemplos son reproducibles.
+Semana 8 · Integración, documentación y entrega
+Estabilizar contratos, fijar dependencias, documentar instalación, comandos, esquemas, límites y protocolo de evaluación. Preparar demostración con un caso no visto y la comparación de dos corridas. Entregar código, pruebas, datos permitidos e informe de residencia.
+Entregable y cierre: una tercera persona ingiere un log, consulta un evento y compara dos corridas siguiendo el manual; el asesor puede auditar cada hallazgo hasta el log original.
+5. Evaluación y metas propuestas
+Métricas del núcleo: coincidencia exacta de conteos UVM_ERROR/UVM_FATAL y UVM_WARNING; exactitud de test_name; precisión y exhaustividad de eventos relevantes; acierto de PASS/FAIL/INDETERMINADO; precisión de pares monitor/scoreboard y detección de ausentes, duplicados o campos alterados; exactitud de líneas; proporción de respuestas sustentadas; latencia y tamaño de respuesta. Medir por separado la utilidad del modelo pequeño frente a reglas solas.
+Metas a negociar con el asesor: detectar todos los UVM_FATAL explícitos del conjunto etiquetado, lograr ≥95 % de coincidencia exacta en conteos de ERROR/FATAL, ≥90 % de referencias de línea correctas y cero rutas inventadas. Añadir casos de prueba obligatorios para PASS, FAIL e INDETERMINADO, warnings que no cambian el estado por sí solos, UVM_TESTNAME como metadato y correlación MATCH/LOSS/DIVERGENCE/NOT_OBSERVABLE. Son objetivos propuestos, no resultados.
+Evaluación iterativa: medir si el RCA puede pasar de resumen a evento, de evento a contexto y de una corrida a otra sin solicitar el log completo. Registrar número de llamadas y volumen de texto entregado frente a una línea base que entrega el log completo. No atribuir ahorro de tokens o mejora de RCA sin una medición concreta.
+6. Riesgos y decisiones de alcance
+Logs heterogéneos: priorizar un simulador y un formato UVM. Sin mensajes por transacción del monitor o del scoreboard, devolver NOT_OBSERVABLE y solicitar instrumentación, nunca deducir igualdad de un resumen agregado. IDs ausentes o reordenamiento: marcar pares ambiguos. UVM_WARNING: presentarlo como pista, sin convertirlo en fallo. Datos insuficientes: usar muestras sintéticas para construir y evaluar en logs reales. Tiempo limitado: priorizar trazabilidad, correlación y estados explicables antes que interfaz gráfica o ajuste fino.
+Para la primera entrega, una biblioteca Python y CLI con JSON son suficientes; un adaptador de herramientas para otra IA (por ejemplo MCP, si el entorno cliente lo usa) se agrega sobre las mismas funciones después de estabilizar sus contratos. Evitar diseñar el núcleo alrededor de un proveedor concreto.
+7. Decisiones para la próxima reunión
+Confirmar: simulador y versión de UVM; acceso a mensajes por transacción del monitor y recepción en scoreboard; clave de correlación, campos comparables, reordenamiento y reintentos; formato de +UVM_TESTNAME; política local de cierre y PASS/FAIL/INDETERMINADO; tratamiento de warnings; cliente RCA previsto, cómputo y confidencialidad. Revisar contrato y casos de prueba al cierre de la semana 2; mostrar un caso de correlación y otro INDETERMINADO en la demostración intermedia.
+8. Referencias técnicas
+Accellera, UVM 1.2 User’s Guide: funciones del monitor y scoreboard y selección de test mediante +UVM_TESTNAME. https://www.accellera.org/images/downloads/standards/uvm/uvm_users_guide_1.2.pdf
+Python, documentación de argparse: comandos y subcomandos para la CLI. https://docs.python.org/3/library/argparse.html
+JSON Schema: propiedades requeridas y diferencia entre ausente y null. https://json-schema.org/understanding-json-schema/reference/object
+Model Context Protocol, visión general de herramientas: referencia para un adaptador opcional de funciones invocables por otra IA. https://modelcontextprotocol.io/specification/draft/server/index
+Nota: las convenciones concretas del simulador y la definición local de fallo deben validarse con logs del proyecto y con el asesor.
+

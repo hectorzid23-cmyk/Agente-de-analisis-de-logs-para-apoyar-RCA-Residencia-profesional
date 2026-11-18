@@ -24,3 +24,7 @@ python -m semana_2.demo_manual INDETERMINADO
 ```
 
 Cada ejecución muestra la evidencia encontrada en el log y el resultado funcional de referencia del caso. Las etiquetas provienen del manifiesto de pruebas.
+
+## Conjuntos de datos externos
+
+Las colecciones `uvm_projects_vivado` y `uvm_projects_vivado_variants` se conservan en la carpeta local hermana `../Archivos-adicionales-residencia/`. Cada colección incluye su índice de logs, documentación y procedencia. Para utilizarlas en otro equipo se necesita obtener una copia y proporcionar su ubicación al lector de logs. Esta referencia describe la organización local del proyecto.
